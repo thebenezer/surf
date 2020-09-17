@@ -1,11 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Surf</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="static/images/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="static/images/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="static/images/favicons/favicon-16x16.png">
+    <link href="https://fonts.googleapis.com/css2?family=Prata&display=swap" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500&display=swap" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/nav.css">
 </head>
+
 <body>
+    <header>
+        <div class="scroll">
+
+        </div>
+        <nav>
+            <div class="logo">
+                <a href="index.html" ><img src="/assets/images/surf_logo.svg" alt="" /></a>
+            </div>
+                <ul class="navlinks">
+                <li><a href="#">Explore</a></li>
+                <li><a href="#">Feed</a></li>
+                <li class="mobile-signup"><a href="#">Sign-up</a></li>
+                <li><a href="#">Login</a></li>
+                <!-- <li class="cta"><a href="#">Signup</a></li> -->
+            </ul>
+            <a class="cta" href="#">Signup</a>
+            <div class="hamburger">
+                <span class="line1"></span>
+                <span class="line2"></span>
+                <span class="line3"></span>
+            </div>
+        </nav>
+    </header>
+
+
+    <main>
+        <section class="earth">
+            <canvas>
+
+            </canvas>
+            <div>
+                <!-- <h1>Surf</h1>
+                <h2>Destinations made simple</h2> -->
+            </div>
+        </section>
+        
+        <section>
+
+        </section>
+    </main>
+
+
+    <footer>
+        <div class="newsletter-section">
+            <div class="handpicked"></div>
+            <div class="newsletter">
+                <h6>Join The Club</h6>
+                <p>Sign up to our newsletter to receive product updates, exclusive offers and lucky draws.</p>
+                <form action="POST">
+                    <input type="text" placeholder="Name" id="name" required>    
+                    <input type="email" placeholder="Email" id="email" required><br>
+                    <button type="submit" name="newsletter-sumbit">Count Me In</button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="innerfooter">
+            <div class="moto">
+                <a href="#" class="logo"><img src="assets/images/surf_logowhite.svg" alt=""></a>
+                <p>Destinations made simple.</p>
+                <ul class="social">
+                    <li><a href="#"></a></li>
+                    <li><a href="#"></a></li>
+                    <li><a href="#"></a></li>
+                </ul>
+            </div>
+            <div class="footerlinks">
+                <ul>
+                    <h6>SITE</h6>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Reviews</a></li>
+                    <li><a href="#">Featured</a></li>
+                </ul>
+                
+                <ul>
+                    <h6>INFO</h6>
+                    <li><a href="#">Privacy</a></li>
+                    <li><a href="#">Terms</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Join Us</a></li>
+                </ul>
+            </div>
     
+        </div>
+
+        <div class="copy"><br>
+            <p>&#169; 2020 Surf, Inc. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- **************** SCRIPTS ***************** -->
+    <script src="/js/menu.js"></script>
+
 </body>
+
 </html>

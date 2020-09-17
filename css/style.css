@@ -1,0 +1,46 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+}
+
+body{
+    /* background-color: #ffffff; */
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: 'Open Sans', sans-serif;
+
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'prata', sans-serif;
+    font-weight: 500;
+}
+header,footer{
+    flex-shrink: 0;
+}
+main {
+    flex-grow: 1;
+}
+
+.earth{
+    /* background-color: violet; */
+    display: flex;
+}
+.earth canvas{
+    flex: 2;
+}
+
+
+@media screen and (max-width:768px){
+    .earth{
+        /* background-color: violet; */
+        display: flex;
+        flex-direction: column;
+    }
+}
