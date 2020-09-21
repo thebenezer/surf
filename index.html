@@ -5,6 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Surf</title>
+    <link rel="icon" type="image/svg" href="favicon.svg">
     <link rel="apple-touch-icon" sizes="180x180" href="static/images/favicons/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="static/images/favicons/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="static/images/favicons/favicon-16x16.png">
@@ -16,13 +17,17 @@
 </head>
 
 <body>
+    <div class="loading-screen">
+        <p>Loading...</p>
+        <img src="./assets/images/boat2.svg" alt="">
+    </div>
     <header>
         <div class="scroll">
 
         </div>
         <nav>
             <div class="logo">
-                <a href="index.html" ><img src="/assets/images/surf_logo.svg" alt="" /></a>
+                <a href="index.html" ><img src="/assets/images/surfnew.svg" alt="" /></a>
             </div>
                 <ul class="navlinks">
                 <li><a href="#">Explore</a></li>
@@ -43,18 +48,15 @@
 
     <main>
         <section class="earth">
-            <canvas>
+            <canvas id="c">
 
             </canvas>
-            <div>
-                <!-- <h1>Surf</h1>
-                <h2>Destinations made simple</h2> -->
+            <div class="desktop">
+                <h1>Surf</h1>
+                <h2>Destinations made simple</h2>
             </div>
         </section>
-        
-        <section>
 
-        </section>
     </main>
 
 
@@ -109,7 +111,7 @@
 
     <!-- **************** SCRIPTS ***************** -->
     <script src="/js/menu.js"></script>
-
+    <script src="/js/3dmodel.js" type="module"></script>
 </body>
 
 </html>

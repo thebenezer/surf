@@ -10,12 +10,15 @@
 
 body{
     /* background-color: #ffffff; */
-    overflow-x: hidden;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
     font-family: 'Open Sans', sans-serif;
-
+    overflow: hidden;
+}
+body.complete{
+    overflow: scroll;
+    overflow-x: hidden;
 }
 h1, h2, h3, h4, h5, h6 {
     font-family: 'prata', sans-serif;
@@ -28,19 +31,84 @@ main {
     flex-grow: 1;
 }
 
-.earth{
-    /* background-color: violet; */
+.loading-screen{
+    z-index: 5;
+    position: absolute;
+    text-align: center;
+    background-color: rgb(0, 0, 0);
+    color: rgb(235, 231, 231);
+    width: 100%;
+    height: 100%;
     display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
 }
-.earth canvas{
-    flex: 2;
+.loading-screen p{
+    /* margin: auto; */
+    font-size: 30px;
+}
+.loading-screen img{
+    margin: 0px auto 50vh auto;
+    width: 50px;
+    /* animation: ; */
+}
+.loading-screen.complete{
+    /* z-index: -5; */
+    /* background-color: rgb(255, 0, 0); */
+    /* display: none; */
+    opacity: 0;
+    transition: 2s all ease;
+}
+.loading-screen.complete{
+    z-index: -5;
 }
 
+.earth{
+    /* background-color: violet; */
+    /* display: flex; */
+    height: 90vh;
+}
+.earth canvas{
+    /* background-image: url("/assets/images/gray.svg"); */
+    flex: 2;
+    outline: none;
+    height: 100%;
+    width: 80%;
+}
+.desktop{
+    z-index: 1;
+    position: absolute;
+    flex: 1;
+    top: 40%;
+    left: 80%;
+    background-color: rgba(255, 255, 255, 0);
+    text-align: center;
+    margin: auto;
+}
+.desktop h1{
+    font-size: 4em;
+}
+.desktop h2{
+    font-size: 1em;
+}
 
 @media screen and (max-width:768px){
     .earth{
+        /* height: 90vh; */
         /* background-color: violet; */
         display: flex;
         flex-direction: column;
+    }
+    .earth canvas{
+        /* background-image: url("/assets/images/gray.svg"); */
+        width: 100%;
+    }
+    .desktop{
+        display: none;
+        /* top: 100%; */
+        /* left: 0%; */
+        /* width: 100%; */
+        /* height: 10vh; */
+        /* position: relative; */
     }
 }
