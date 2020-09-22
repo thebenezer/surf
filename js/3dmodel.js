@@ -18,9 +18,11 @@ function main() {
     });
     renderer = new THREE.WebGLRenderer({canvas,antialias:true});
     // document.body.appendChild( renderer.domElement );
-    camera = new THREE.PerspectiveCamera(60, canvas.clientWidth / canvas.clientHeight, 1, 1000);    
-    camera.position.z = 120;
-
+    camera = new THREE.PerspectiveCamera(60, canvas.clientWidth / canvas.clientHeight, 1, 1000);  
+    if(document.documentElement.clientWidth>768)  
+      camera.position.z = 90;
+    else
+      camera.position.z = 120;
     scene = new THREE.Scene();
     scene.background = new THREE.Color(0xFFFFFF);
  
@@ -55,7 +57,7 @@ function main() {
       console.log( 'Loading complete!');
       loadingScreen.classList.toggle('complete');
       body.classList.add('complete');
-      setTimeout(function(){ loadingScreen.classList.add('hide'); }, 10000);
+      setTimeout(function(){ loadingScreen.classList.add('hide'); }, 2000);
     };
 
     manager.onProgress = function ( url, itemsLoaded, itemsTotal ) {

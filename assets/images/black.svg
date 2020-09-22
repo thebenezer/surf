@@ -13048,7 +13048,8 @@
      inkscape:label="ink_ext_XXXXXX"
      transform="matrix(1.3333333,0,0,-1.3333333,-27.57993,315.57993)"><g
        id="g16467"
-       transform="matrix(-0.37962298,0,0,-0.37962298,212.01493,236.68495)"><path
+       transform="matrix(-0.37962298,0,0,-0.37962298,212.01493,236.68495)"
+       style="opacity:0.6"><path
          d="M 504,0 H 0 V 216 H 504 V 0"
          style="fill:url(#linearGradient18);fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.1"
          id="path20" /><g

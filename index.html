@@ -19,7 +19,7 @@
 <body>
     <div class="loading-screen">
         <p>Loading...</p>
-        <img src="./assets/images/boat2.svg" alt="">
+        <img src="./assets/images/sailboat.svg" alt="">
     </div>
     <header>
         <div class="scroll">
@@ -51,14 +51,19 @@
             <canvas id="c">
 
             </canvas>
-            <div class="desktop">
+            <div class="heading">
                 <h1>Surf</h1>
                 <h2>Destinations made simple</h2>
+                <div class="more">
+                    <img src="assets/images/swipe.svg" alt="up icon">
+                    <span>Scroll Here</span>
+                    <!-- <span class="mobile">Swipe</span> -->
+                </div>
             </div>
         </section>
 
     </main>
-
+   
 
     <footer>
         <div class="newsletter-section">
@@ -112,6 +117,13 @@
     <!-- **************** SCRIPTS ***************** -->
     <script src="/js/menu.js"></script>
     <script src="/js/3dmodel.js" type="module"></script>
+    <!-- <script>
+        const body = document.querySelector('body');
+        const loadingScreen = document.querySelector('.loading-screen');
+        loadingScreen.classList.toggle('complete');
+        setTimeout(function(){ body.classList.add('complete'); }, 2000);
+        setTimeout(function(){ loadingScreen.classList.add('hide'); }, 2000);
+    </script> -->
 </body>
 
 </html>

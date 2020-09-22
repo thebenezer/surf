@@ -66,6 +66,7 @@ nav{
         display: block;
     }
     nav{
+        z-index: 2;
         padding: 10px 5%;
     }
     .navlinks{
@@ -159,14 +160,16 @@ nav{
 /* *********FOOTER STYLING************** */
 
 footer{
-    background: rgb(22, 22, 22) url("/assets/images/black.svg") no-repeat center;
+    /* background: rgba(22, 22, 22, 0.39); */
+    background: rgba(22, 22, 22, 0.5) url("/assets/images/black.svg") no-repeat center;
     background-size: cover;
+    z-index: 1;
     color: white;
 }
 
 /* ***********NEWSLETTER SECTION************** */
 .newsletter-section{
-    background: rgb(156, 187, 175) url("/assets/images/blue.svg") no-repeat center ;
+    background: rgba(156, 187, 175, 0.658) url("/assets/images/blue.svg") no-repeat center ;
     background-size: cover;
     /* box-shadow: 0px 10px 1px #b1e5ee; */
     display: flex;
@@ -176,7 +179,7 @@ footer{
 
 .newsletter{
     padding: 50px;
-    background-color: rgba(214, 214, 214, 0.692);
+    background-color: rgba(214, 214, 214, 0.192);
 	box-shadow: 0 15px 30px 1px rgba(128, 128, 128, 0.31);
     border-radius: 5px;
     width: 50%;
