@@ -1,0 +1,33 @@
+
+.page-heading{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    background-image: linear-gradient(to bottom right,rgb(100, 170, 211),rgb(156, 236, 226));
+    padding: 100px auto 60px auto;
+}
+.container{
+    width: 80%;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.privacy a{
+    color: cadetblue;
+}
+.privacy-summary ul,.privacy ul{
+    margin-left: 30px;
+}
+/* .privacy-summary div{
+    width: fit-content;
+    margin: auto;
+} */
+
+@media screen and (max-width:768px){
+    .privacy-summary ul,.privacy ul{
+        margin-left: 30px;
+    }
+}
