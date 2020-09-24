@@ -15,19 +15,15 @@
     padding: 0;
 }
 
-.privacy a{
+.privacyandterms a{
     color: cadetblue;
 }
-.privacy-summary ul,.privacy ul{
+.privacyandterms ul{
     margin-left: 30px;
 }
-/* .privacy-summary div{
-    width: fit-content;
-    margin: auto;
-} */
 
 @media screen and (max-width:768px){
-    .privacy-summary ul,.privacy ul{
+    .privacyandterms-summary ul,.privacyandterms ul{
         margin-left: 30px;
     }
 }
