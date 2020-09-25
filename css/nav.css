@@ -3,7 +3,7 @@ nav{
     display: flex;
     position: fixed;
     width: 100%;
-    z-index: 1;
+    z-index: 2;
     justify-content: space-around;
     /* background-color: rgb(207, 207, 204); */
     padding: 10px 10%;
@@ -26,6 +26,7 @@ nav{
     /* background: crimson; */
 }
 .navlinks li{
+    list-style: none;
     margin: auto 0 auto 90px;
 }
 .navlinks li a{
@@ -240,6 +241,9 @@ footer{
     flex: 1;
     text-align: center;
 }
+.moto img{
+    filter: invert(1);
+}
 .footerlinks{
     display: flex;
     flex: 2;
@@ -251,6 +255,7 @@ footer{
     font-weight: bold;
 }
 .footerlinks li{
+    list-style: none;
     margin: 20px;
 }
 .footerlinks a{

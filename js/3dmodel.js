@@ -83,6 +83,13 @@ function main() {
       // module.rotation.z=0.40910518;
       scene.add(module);
     });
+  //   var geometry = new THREE.SphereBufferGeometry( 5, 32, 32 );
+  // var material = new THREE.MeshBasicMaterial( {color: 0xffff00} );
+  // var sphere = new THREE.Mesh( geometry, material );
+  // scene.add( sphere );
+  // loadingScreen.classList.toggle('complete');
+  //     body.classList.add('complete');
+  //     setTimeout(function(){ loadingScreen.classList.add('hide'); }, 2000);
   }
 
   function resizeRendererToDisplaySize(renderer) {
