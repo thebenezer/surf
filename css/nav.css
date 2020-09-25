@@ -241,6 +241,9 @@ footer{
     flex: 1;
     text-align: center;
 }
+.moto img{
+    filter: invert(1);
+}
 .footerlinks{
     display: flex;
     flex: 2;
