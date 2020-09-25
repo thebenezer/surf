@@ -25,8 +25,10 @@
 
 <body>
     <div class="loading-screen">
-        <p>Loading...</p>
-        <img src="./assets/images/sailboat.svg" alt="">
+        <h1 class="load-logo">SURF</h1>
+        <p class="tagline">Destinations made simple</p>
+        <img  class="boat" src="./assets/images/sailboat.svg" alt="">
+        <p class="loading">Loading...</p>
     </div>
     <header>
         <div class="scroll">
@@ -55,9 +57,9 @@
 
     <main>
         <h1 style="font-size: 3em;text-align: center; margin-top: 10vh;">Contact Us</h1>
-        <section class="container" style="margin-top: 5vh;">
+        <section class="container">
             
-            <form>
+            <form class="forms">
                 <label>
                     <input type="text" required />
                     <div class="label-text">First Name</div>
@@ -70,12 +72,11 @@
                     <input type="email" required />
                     <div class="label-text">Email Address</div>
                 </label>
-                <label>
-                    <div class="label-text">Message</div>
+                <label class="textbox">
+                    <div class="label-textarea">Message</div>
                     <textarea></textarea>
                 </label>
                 <button>Submit</button>
-                <br>
             </form>
         </section>
 
@@ -119,8 +120,8 @@
                     <h6>INFO</h6>
                     <li><a href="privacy.html">Privacy</a></li>
                     <li><a href="terms.html">Terms</a></li>
-                    <li><a href="#">Services</a></li>
-                    <li><a href="#">Join Us</a></li>
+                    <li><a href="bugreport.html">Bug Reports</a></li>
+                    <li><a href="join.html">Join Us</a></li>
                 </ul>
             </div>
 
@@ -135,6 +136,7 @@
 
     <!-- **************** SCRIPTS ***************** -->
     <script src="/js/menu.js"></script>
+    <script src="/js/forms.js"></script>
     <!-- <script src="/js/3dmodel.js" type="module"></script> -->
     <script>
         const body = document.querySelector('body');

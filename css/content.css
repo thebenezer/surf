@@ -88,3 +88,26 @@
         -webkit-transform-origin: 200px 200px;
     }
 }
+
+/* ***************ABOUT PAGE STYLING***************** */
+.about{
+    margin: 80px 0 40px 0;
+    display: flex;
+    justify-content: space-around;
+}
+.about div{
+    margin: auto;
+    font-size: 20px;
+}
+.about img{
+    width: 100%;
+}
+@media screen and (max-width:768px){
+    .about{
+        flex-direction: column-reverse;
+    }
+    .about div{
+        margin: auto;
+        font-size: 16px;
+    }
+}

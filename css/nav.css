@@ -200,7 +200,7 @@ footer{
     display: inline-block;
     text-align: center;
     border-radius: 7px;
-    background: rgb(255, 255, 255);
+    background: rgb(223, 223, 223);
     padding: 1em 2em;
     outline: none;
     border: none;
@@ -208,7 +208,7 @@ footer{
     transition: 0.3s linear;
 }
 ::placeholder{color: #999;}
-.newsletter form input:focus {background: rgba(0, 0, 333, 0.10);}
+.newsletter form input:focus {background: rgb(255, 255, 255);}
 
 .newsletter form button {
     background-image: linear-gradient(to left, rgba(211, 211, 211, 0.86) 0%, rgba(0, 247, 255, 0.75) 100%);

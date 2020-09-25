@@ -12,12 +12,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Prata&display=swap" rel="stylesheet">
     <!-- <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500&display=swap" rel="stylesheet"> -->
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/rest.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/content.css">
     <link rel="stylesheet" href="css/nav.css">
 </head>
 
 <body>
-
+    <div class="loading-screen">
+        <h1 class="load-logo">SURF</h1>
+        <p class="tagline">Destinations made simple</p>
+        <img  class="boat" src="./assets/images/sailboat.svg" alt="">
+        <p class="loading">Loading...</p>
     </div>
     <header>
         <div class="scroll">
@@ -45,25 +50,40 @@
 
 
     <main>
-        <section class="titles">
-            <div class="heading">
-                <h1>About Us</h1>
-                <h2>Surf is an interactive guide to the world’s best travel destinations.<br><br>
-                     Our website gives you the tools to plan your next trip: in-depth information on destinations; inspiring ideas on what to see and do.
-                     <br><br> Explore the world with our easy to use 3D visualization by just pointing and clicking where you want to visit.
-                </h2>
-                
-            </div>
+        
+        <section class="container">
+            <article class="about">
+                <div>
+                    <h1>About Surf</h1><br>
+                    <p>Surf is an interactive guide to the world’s best travel destinations.</p>
+                    <br><p>We give you the tools to plan your next trip: in-depth information on destinations; inspiring ideas on what to see and do.</p>
+                    <br><p>Explore the world with our intuitive and easy to use 3D visualization by just pointing and clicking where you want to visit on the globe.</p>
+                    <br><p>If you would like to contribute to the work we do at Surf, do look at our <a href="join.html">Join us</a> page</p>
+                </div>
+                <img src="/assets/images/3dearth.png">
+            </article>
         </section>
-        <img src="/assets/images/3dearth.png" style="position: relative;flex: 1;left: 60%;">
+
     </main>
    
 
     <footer>
+        <div class="newsletter-section">
+            <div class="handpicked"></div>
+            <div class="newsletter">
+                <h6>Join The Club</h6>
+                <p>Sign up to our newsletter to receive product updates, exclusive offers and lucky draws.</p>
+                <form action="POST">
+                    <input type="text" placeholder="Name" id="name" required>    
+                    <input type="email" placeholder="Email" id="email" required><br>
+                    <button type="submit" name="newsletter-sumbit">Count Me In</button>
+                </form>
+            </div>
+        </div>
         
         <div class="innerfooter">
             <div class="moto">
-                <a href="#" class="logo"><img src="assets/images/surf_logowhite.svg" alt=""></a>
+                <a href="#" class="logo"><img src="assets/images/surfnew.svg" alt=""></a>
                 <p>Destinations made simple.</p>
                 <ul class="social">
                     <li><a href="#"></a></li>
@@ -84,8 +104,8 @@
                     <h6>INFO</h6>
                     <li><a href="privacy.html">Privacy</a></li>
                     <li><a href="terms.html">Terms</a></li>
-                    <li><a href="#">Services</a></li>
-                    <li><a href="#">Join Us</a></li>
+                    <li><a href="bugreport.html">Bug Reports</a></li>
+                    <li><a href="join.html">Join Us</a></li>
                 </ul>
             </div>
     
@@ -96,6 +116,16 @@
         </div>
     </footer>
 
+    <!-- **************** SCRIPTS ***************** -->
+    <script src="/js/menu.js"></script>
+    <!-- <script src="/js/3dmodel.js" type="module"></script> -->
+    <script>
+        const body = document.querySelector('body');
+        const loadingScreen = document.querySelector('.loading-screen');
+        // loadingScreen.classList.toggle('complete');
+        setTimeout(function(){ body.classList.add('complete'); }, 2000);
+        setTimeout(function(){ loadingScreen.classList.add('hide'); }, 2000);
+    </script>
 </body>
 
 </html>

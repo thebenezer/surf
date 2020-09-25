@@ -1,6 +1,7 @@
-form {
-    text-align: right;
+.forms {
+    text-align: center;
     margin: auto;
+    padding: 40px 0 20px 0;
     width: 50%;
 }
 
@@ -10,9 +11,8 @@ label {
     padding-top: 30px;
     text-align: left;
 }
-
-label .label-text {
-    color:#000000);
+.label-text,.label-textarea {
+    color:#000000;
     cursor: text;
     font-size: 20px;
     line-height: 20px;
@@ -21,32 +21,40 @@ label .label-text {
     transition: all 0.3s;
     text-align: left;
 }
-
-label textarea {
-    background-color: transparent;
+.label-textarea{
+    margin:45px 0 -115px 0;
+    /* transform: translateY(15px); */
+}
+.textbox textarea {
     border: none;
-    border-bottom: 2px solid #000000;
+    outline: none;
+    border-bottom:2px solid #000000;
     font-size: 18px;
     width: 100%;
+    height: 100px;
     color: #000000;
-    font-family: "Open Sans", Helvetica;
-    font-size: 20px;
     text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+.textbox textarea.small {
+    border: none;
+    border:2px solid #000000;
+    margin-bottom: 60px;
+    transform: translateY(64px);
+}
+.label-textarea.small{
+    font-size: 13px;
+    transform: translateY(-74px);
 }
 
-label:focus+.label-text {
+.textbox textarea:focus+.label-text {
     color: #000000;
     font-size: 13px;
     transform: translateY(-74px);
 }
 
-label:focus:valid+.label-text {
-    font-size: 13px;
-    transform: translateY(-74px);
-}
 
 label input {
-    background-color: transparent;
     border: 0;
     border-bottom: 2px solid #000000;
     color: #000000;
@@ -58,9 +66,6 @@ label input {
     width: 100%;
 }
 
-label input:focus {
-    width: 100%;
-}
 
 label input:focus+.label-text {
     color: #000000;
@@ -93,4 +98,10 @@ button:focus {
     border-color: rgb(0, 0, 0);
     color: #53acff;
     outline: 0;
+}
+
+@media screen and (max-width:768px){
+    .forms{
+        width: 100%;
+    }
 }
