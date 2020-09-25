@@ -1,0 +1,124 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    min-height: 100px;
+    font-family: 'Open Sans', sans-serif;
+    overflow: hidden;
+}
+body.complete{
+    overflow: scroll;
+    overflow-x: hidden;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'prata', sans-serif;
+    font-weight: 500;
+}
+header,footer{
+    flex-shrink: 0;
+}
+main {
+    flex-grow: 1;
+}
+
+/*----------------------------------------------*/
+
+.container{
+    width: 90%;
+    margin: auto;
+    margin-top: 15vh;
+}
+
+.titles{
+    /*height: 100px; */
+    margin: auto;
+    margin-top: 15vh;
+    width:90%;
+}
+
+.heading{
+    z-index: 1;
+    position: fixed;
+    flex: 1;
+    top: 15%;
+    right: 60%;
+    background-color: rgba(255, 255, 255, 0);
+    text-align: left;
+    margin: auto;
+    padding-left: 30px;
+}
+.heading h1{
+    font-size: 4em;
+}
+.heading h2{
+    font-size: 20px;
+    font-weight: 200;
+}
+
+/* contact */
+.contact_form{
+
+    background:#f7f7f7;
+    width:40%;
+    padding:16px;
+    border-radius:20px;
+    border:solid 5px #494949;
+}
+
+.contact_form table{
+    width:100%;
+}
+
+.reg{
+    color:#000000;
+    width:40%;
+    float:right;
+    border:solid 5px #494949;
+    text-align:center;
+    font-size:18px;
+}
+
+input[type=button], input[type=submit], input[type=reset] {
+    color: #494949;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: #ffffff;
+    padding: 10px;
+    border: 4px solid #494949;
+    display: inline-block;
+    transition: all 0.4s ease 0s;
+    margin: 8px;
+    
+}
+
+input[type=text],input[type=password],input[type=email],input[type=date]{
+    border: single;
+    padding:10px;
+    width:80%;
+    
+    margin:8px;
+    
+}
+
+input[type="submit"]:hover, input[type="button"]:hover{
+    color: #ffffff !important;
+    background: #233;
+    border-color: #233;
+    transition: all 0.4s ease 0s;
+}
+
+
+/*---------------------------------------------*/
+
+  
+/* for terms and service stuff */
+

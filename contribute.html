@@ -13,7 +13,14 @@
     <!-- <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500&display=swap" rel="stylesheet"> -->
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/content.css">
     <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/form.css">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+    
 </head>
 
 <body>
@@ -27,9 +34,9 @@
         </div>
         <nav>
             <div class="logo">
-                <a href="index.html" ><img src="/assets/images/surfnew.svg" alt="" /></a>
+                <a href="index.html"><img src="/assets/images/surfnew.svg" alt="" /></a>
             </div>
-                <ul class="navlinks">
+            <ul class="navlinks">
                 <li><a href="#">Explore</a></li>
                 <li><a href="#">Feed</a></li>
                 <li class="mobile-signup"><a href="#">Sign-up</a></li>
@@ -47,23 +54,34 @@
 
 
     <main>
-        <section class="earth">
-            <canvas id="c">
+        <h1 style="font-size: 3em;text-align: center; margin-top: 10vh;">Found a bug?                      <i class="fas fa-bug"></i></h1>
 
-            </canvas>
-            <div class="heading">
-                <h1>Surf</h1>
-                <h2>Destinations made simple</h2>
-                <div class="more">
-                    <img src="assets/images/swipe.svg" alt="up icon">
-                    <span>Scroll Here</span>
-                    <!-- <span class="mobile">Swipe</span> -->
-                </div>
-            </div>
+        <section class="container" style="margin-top: 5vh;">
+            
+            <form>
+                <label>
+                    <input type="text" required />
+                    <div class="label-text">Name</div>
+                </label>
+                <label>
+                    <input type="email" required />
+                    <div class="label-text">Email Address</div>
+                </label>
+                <label>
+                    <input type="text" required />
+                    <div class="label-text">Issue</div>
+                </label>
+                <label>
+                    <div class="label-text">Please Elaborate</div>
+                    <textarea></textarea>
+                </label>
+                <button>Submit</button>
+                <br>
+            </form>
         </section>
 
     </main>
-   
+
 
     <footer>
         <div class="newsletter-section">
@@ -72,13 +90,13 @@
                 <h6>Join The Club</h6>
                 <p>Sign up to our newsletter to receive product updates, exclusive offers and lucky draws.</p>
                 <form action="POST">
-                    <input type="text" placeholder="Name" id="name" required>    
+                    <input type="text" placeholder="Name" id="name" required>
                     <input type="email" placeholder="Email" id="email" required><br>
                     <button type="submit" name="newsletter-sumbit">Count Me In</button>
                 </form>
             </div>
         </div>
-        
+
         <div class="innerfooter">
             <div class="moto">
                 <a href="#" class="logo"><img src="assets/images/surfnew.svg" alt=""></a>
@@ -97,7 +115,7 @@
                     <li><a href="reviews.html">Reviews</a></li>
                     <li><a href="featured.html">Featured</a></li>
                 </ul>
-                
+
                 <ul>
                     <h6>INFO</h6>
                     <li><a href="privacy.html">Privacy</a></li>
@@ -106,7 +124,7 @@
                     <li><a href="#">Join Us</a></li>
                 </ul>
             </div>
-    
+
         </div>
 
         <div class="copy"><br>
@@ -114,16 +132,18 @@
         </div>
     </footer>
 
+
+
     <!-- **************** SCRIPTS ***************** -->
     <script src="/js/menu.js"></script>
-    <script src="/js/3dmodel.js" type="module"></script>
-    <!-- <script>
+    <!-- <script src="/js/3dmodel.js" type="module"></script> -->
+    <script>
         const body = document.querySelector('body');
         const loadingScreen = document.querySelector('.loading-screen');
         loadingScreen.classList.toggle('complete');
-        setTimeout(function(){ body.classList.add('complete'); }, 2000);
-        setTimeout(function(){ loadingScreen.classList.add('hide'); }, 2000);
-    </script> -->
+        setTimeout(function () { body.classList.add('complete'); }, 2000);
+        setTimeout(function () { loadingScreen.classList.add('hide'); }, 2000);
+    </script>
 </body>
 
 </html>

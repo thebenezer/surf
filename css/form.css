@@ -1,0 +1,96 @@
+form {
+    text-align: right;
+    margin: auto;
+    width: 50%;
+}
+
+label {
+    display: block;
+    letter-spacing: 4px;
+    padding-top: 30px;
+    text-align: left;
+}
+
+label .label-text {
+    color:#000000);
+    cursor: text;
+    font-size: 20px;
+    line-height: 20px;
+    text-transform: uppercase;
+    transform: translateY(-34px);
+    transition: all 0.3s;
+    text-align: left;
+}
+
+label textarea {
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid #000000;
+    font-size: 18px;
+    width: 100%;
+    color: #000000;
+    font-family: "Open Sans", Helvetica;
+    font-size: 20px;
+    text-transform: uppercase;
+}
+
+label:focus+.label-text {
+    color: #000000;
+    font-size: 13px;
+    transform: translateY(-74px);
+}
+
+label:focus:valid+.label-text {
+    font-size: 13px;
+    transform: translateY(-74px);
+}
+
+label input {
+    background-color: transparent;
+    border: 0;
+    border-bottom: 2px solid #000000;
+    color: #000000;
+    font-size: 36px;
+    letter-spacing: -1px;
+    outline: 0;
+    text-align: left;
+    transition: all 0.3s;
+    width: 100%;
+}
+
+label input:focus {
+    width: 100%;
+}
+
+label input:focus+.label-text {
+    color: #000000;
+    font-size: 13px;
+    transform: translateY(-74px);
+}
+
+label input:valid+.label-text {
+    font-size: 13px;
+    transform: translateY(-74px);
+}
+
+button {
+    background-color: #5C5C5C;
+    border: 2px solid #fff;
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 15px 30px;
+    text-transform: uppercase;
+    transition: all 200ms;
+}
+
+button:hover,
+button:focus {
+    background-color: #fff;
+    border-color: rgb(0, 0, 0);
+    color: #53acff;
+    outline: 0;
+}
