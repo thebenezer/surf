@@ -162,7 +162,7 @@ nav{
 
 footer{
     /* background: rgba(22, 22, 22, 0.39); */
-    background: rgba(22, 22, 22, 0.5) url("assets/images/black.svg") no-repeat center;
+    background: rgba(22, 22, 22, 0.5) url(".././assets/images/black.svg") no-repeat center;
     background-size: cover;
     z-index: 1;
     color: white;
