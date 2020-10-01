@@ -29,7 +29,7 @@ function convertFlatCoordsToSphereCoords(x, y) {
 function loadingcomplete(){
     const body = document.querySelector('body');
     const loadingScreen = document.querySelector('.loading-screen');
-    loadingScreen.classList.toggle('complete');
+    // loadingScreen.classList.toggle('complete');
     setTimeout(function(){ body.classList.add('complete'); }, 2000);
     setTimeout(function(){ loadingScreen.classList.add('hide'); }, 2000);    
 }
@@ -44,23 +44,24 @@ function main(){
 
 
     function init(points) {
-        // 1. Setup scene
+        // Setup scene
         scene = new THREE.Scene();
-        scene.fog = new THREE.FogExp2( 0xe8eddf, 0.002 );
-        // 2. Setup camera
-        // camera = new THREE.PerspectiveCamera(45, width / height);
+        // Setup camera
         camera = new THREE.PerspectiveCamera(60, canvas.clientWidth / canvas.clientHeight, 1, 1000);  
-        // 3. Setup renderer
+        // Setup renderer
         renderer = new THREE.WebGLRenderer({
         canvas,
         antialias: true
         });
-        renderer.setSize(width, height);
+        // Add fog to the scene
+        scene.fog = new THREE.FogExp2( 0xe8eddf, 0.002 );
+    
+
         // 4. Add points to canvas
         // - Single geometry to contain all points.
         const mergedGeometry = new THREE.Geometry();
         // - Material that the dots will be made of.
-        const pointGeometry = new THREE.CubeGeometry(1.2, 1.2, 1.2);
+        const pointGeometry = new THREE.SphereGeometry(0.5, 5, 5);
         const pointMaterial = new THREE.MeshBasicMaterial({
         color: "#008000"
         });
@@ -89,12 +90,12 @@ function main(){
         controls.enableKeys = false;
         controls.enablePan = false;
         controls.enableZoom = true;
-        controls.enableDamping = false;
+        controls.enableDamping = true;
+        controls.dampingFactor = 0.05;
         controls.enableRotate = true;
         controls.autoRotate = true;
         controls.autoRotateSpeed =1;
         // controls.screenSpacePanning = true;
-        // controls.enableZoom=false;
         controls.minDistance = 200;
         controls.maxDistance = 500;
         if(document.documentElement.clientWidth>768)  
