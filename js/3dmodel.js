@@ -2,9 +2,11 @@
 import * as THREE from './three/three.module.js';
 import { OrbitControls } from './three/OrbitControls.js';
 import {GLTFLoader} from './three/GLTFLoader.js';
+ const canvas=document.querySelector('#c');
 
+ 
 function main() {
-  let canvas,renderer,camera,scene,controls,loadingScreen,body;
+  let renderer,camera,scene,controls,loadingScreen,body;
   init();
   animate();
   
@@ -12,7 +14,6 @@ function main() {
     
     body = document.querySelector('body');
     loadingScreen = document.querySelector('.loading-screen');
-    canvas = document.querySelector('#c');
     canvas.addEventListener("scroll", function(event){
       event.preventDefault()
     });
@@ -25,7 +26,7 @@ function main() {
       camera.position.z = 120;
     scene = new THREE.Scene();
     scene.background = new THREE.Color(0xFFFFFF);
- 
+    
     controls = new OrbitControls( camera, renderer.domElement );  
     controls.enableDamping = true; // an animation loop is required when either damping or auto-rotation are enabled
     controls.dampingFactor = 0.05;
@@ -39,57 +40,57 @@ function main() {
     // controls.minPolarAngle = Math.PI / 2;
 
     //....LIGHTS....
-    let amblight = new THREE.AmbientLight(0xffffff,0.1);
-    scene.add(amblight);
-    let light = new THREE.DirectionalLight(0xffffff,2);
+    // let amblight = new THREE.AmbientLight(0xffffff,0.1);
+    // scene.add(amblight);
+    let light = new THREE.DirectionalLight(0xffffff,0.5);
     light.position.set(800, 500, 1000);
     camera.add( light )
     scene.add( camera );
     // scene.add(light);
     
     //....THE WORLD/OJECTS
-    var manager = new THREE.LoadingManager();
-    manager.onStart = function ( url, itemsLoaded, itemsTotal ) {
-      console.log( 'Started loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.' );
-    };
+    // var manager = new THREE.LoadingManager();
+    // manager.onStart = function ( url, itemsLoaded, itemsTotal ) {
+    //   console.log( 'Started loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.' );
+    // };
 
-    manager.onLoad = function ( ) {
-      console.log( 'Loading complete!');
-      loadingScreen.classList.toggle('complete');
+    // manager.onLoad = function ( ) {
+    //   console.log( 'Loading complete!');
+    //   loadingScreen.classList.toggle('complete');
+    //   body.classList.add('complete');
+    //   setTimeout(function(){ loadingScreen.classList.add('hide'); }, 2000);
+    // };
+
+    // manager.onProgress = function ( url, itemsLoaded, itemsTotal ) {
+    //   console.log( 'Loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.' );
+    // };
+
+    // manager.onError = function ( url ) {
+    //   console.log( 'There was an error loading ' + url );
+    // };
+
+    // // var loader = new THREE.OBJLoader( manager );
+    // // loader.load( 'file.obj', function ( object ) {
+    // // } );
+    // const gltfLoader = new GLTFLoader(manager);
+    // gltfLoader.load('./assets/models/world_earth_planet/scene.gltf', (gltf) => {
+    //   const module = gltf.scene;
+    //   // module.scale.set(50,50,50);
+    //   // module.position.x=250;
+    //   // module.position.y=-140;
+    //   // module.position.z=287;
+    //   module.rotation.x=0.40910518;
+    //   module.rotation.y=-0.40910518;
+    //   // module.rotation.z=0.40910518;
+    //   scene.add(module);
+    // });
+    var geometry = new THREE.SphereBufferGeometry( 40, 32, 32 );
+    const material = new THREE.MeshPhongMaterial({color: 0x44aa88});
+  var sphere = new THREE.Mesh( geometry, material );
+  scene.add( sphere );
+  loadingScreen.classList.toggle('complete');
       body.classList.add('complete');
       setTimeout(function(){ loadingScreen.classList.add('hide'); }, 2000);
-    };
-
-    manager.onProgress = function ( url, itemsLoaded, itemsTotal ) {
-      console.log( 'Loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.' );
-    };
-
-    manager.onError = function ( url ) {
-      console.log( 'There was an error loading ' + url );
-    };
-
-    // var loader = new THREE.OBJLoader( manager );
-    // loader.load( 'file.obj', function ( object ) {
-    // } );
-    const gltfLoader = new GLTFLoader(manager);
-    gltfLoader.load('./assets/models/world_earth_planet/scene.gltf', (gltf) => {
-      const module = gltf.scene;
-      // module.scale.set(50,50,50);
-      // module.position.x=250;
-      // module.position.y=-140;
-      // module.position.z=287;
-      module.rotation.x=0.40910518;
-      module.rotation.y=-0.40910518;
-      // module.rotation.z=0.40910518;
-      scene.add(module);
-    });
-  //   var geometry = new THREE.SphereBufferGeometry( 5, 32, 32 );
-  // var material = new THREE.MeshBasicMaterial( {color: 0xffff00} );
-  // var sphere = new THREE.Mesh( geometry, material );
-  // scene.add( sphere );
-  // loadingScreen.classList.toggle('complete');
-  //     body.classList.add('complete');
-  //     setTimeout(function(){ loadingScreen.classList.add('hide'); }, 2000);
   }
 
   function resizeRendererToDisplaySize(renderer) {
@@ -122,4 +123,18 @@ function main() {
   }
 
 }
-main();
+
+function hasWebGL() {
+  const gl =
+    canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
+  if (gl && gl instanceof WebGLRenderingContext) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+if (hasWebGL()) {
+  main();
+}
+
