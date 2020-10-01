@@ -91,7 +91,7 @@ function main(){
         controls.enablePan = false;
         controls.enableZoom = true;
         controls.enableDamping = true;
-        controls.dampingFactor = 5;
+        controls.dampingFactor = 0.05;
         controls.enableRotate = true;
         controls.autoRotate = true;
         controls.autoRotateSpeed =1;
