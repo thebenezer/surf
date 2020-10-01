@@ -33,7 +33,7 @@ function convertFlatCoordsToSphereCoords(x, y) {
 
 function main(){
     window
-        .fetch("/js/points.json")
+        .fetch("./js/points.json")
         .then(response => response.json())
         .then(data => {
         init(data.points);
