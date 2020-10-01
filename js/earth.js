@@ -3,11 +3,6 @@ import * as THREE from './three/three.module.js';
 import { OrbitControls } from './three/OrbitControls.js';
 
 const canvas=document.querySelector('#c');
-const body = document.querySelector('body');
-const loadingScreen = document.querySelector('.loading-screen');
-loadingScreen.classList.toggle('complete');
-setTimeout(function(){ body.classList.add('complete'); }, 2000);
-setTimeout(function(){ loadingScreen.classList.add('hide'); }, 2000);
 
 let renderer,camera,scene,controls;
 const width=canvas.clientWidth;
@@ -31,6 +26,14 @@ function convertFlatCoordsToSphereCoords(x, y) {
     };
 }
 
+function loadingcomplete(){
+    const body = document.querySelector('body');
+    const loadingScreen = document.querySelector('.loading-screen');
+    loadingScreen.classList.toggle('complete');
+    setTimeout(function(){ body.classList.add('complete'); }, 2000);
+    setTimeout(function(){ loadingScreen.classList.add('hide'); }, 2000);    
+}
+
 function main(){
     window
         .fetch("./js/points.json")
@@ -45,7 +48,8 @@ function main(){
         scene = new THREE.Scene();
         scene.fog = new THREE.FogExp2( 0xe8eddf, 0.002 );
         // 2. Setup camera
-        camera = new THREE.PerspectiveCamera(45, width / height);
+        // camera = new THREE.PerspectiveCamera(45, width / height);
+        camera = new THREE.PerspectiveCamera(60, canvas.clientWidth / canvas.clientHeight, 1, 1000);  
         // 3. Setup renderer
         renderer = new THREE.WebGLRenderer({
         canvas,
@@ -98,15 +102,39 @@ function main(){
         else
             camera.position.z = 400;
 
+        loadingcomplete();
         animate();
     }
     
+    function resizeRendererToDisplaySize(renderer) {
+        const canvas = renderer.domElement;
+        const pixelRatio = window.devicePixelRatio;
+        const width  = canvas.clientWidth  * pixelRatio | 0;
+        const height = canvas.clientHeight * pixelRatio | 0;
+        const needResize = canvas.width !== width || canvas.height !== height;
+        if (needResize) {
+          renderer.setSize(width, height, false);
+        }
+        return needResize;
+    }
+    
     function animate() {
-        
+
+        requestAnimationFrame(animate);        
+        if (resizeRendererToDisplaySize(renderer)) {
+            if(document.documentElement.clientWidth>768)  
+                camera.position.z = 300;
+            else
+                camera.position.z = 400;
+            const canvas = renderer.domElement;
+            camera.aspect = canvas.clientWidth / canvas.clientHeight;
+            camera.updateProjectionMatrix();
+        }
         controls.update();// only required if controls.enableDamping = true, or if controls.autoRotate = true
-        requestAnimationFrame(animate);
         renderer.render(scene, camera);
     }
+
+    
 }
 
 function hasWebGL() {
