@@ -84,7 +84,6 @@ function main(){
         const globeShape = new THREE.Mesh(mergedGeometry, pointMaterial);
         scene.add(globeShape);
 
-
         // Setup orbital controls
         controls = new OrbitControls(camera, renderer.domElement);
         controls.enableKeys = false;
@@ -99,9 +98,9 @@ function main(){
         controls.minDistance = 200;
         controls.maxDistance = 500;
         if(document.documentElement.clientWidth>768)  
-            camera.position.z = 300;
+            camera.position.z = 250;
         else
-            camera.position.z = 400;
+            camera.position.z = 300;
 
         loadingcomplete();
         animate();
@@ -124,9 +123,9 @@ function main(){
         requestAnimationFrame(animate);        
         if (resizeRendererToDisplaySize(renderer)) {
             if(document.documentElement.clientWidth>768)  
-                camera.position.z = 300;
+                camera.position.z = 250;
             else
-                camera.position.z = 400;
+                camera.position.z = 300;
             const canvas = renderer.domElement;
             camera.aspect = canvas.clientWidth / canvas.clientHeight;
             camera.updateProjectionMatrix();
