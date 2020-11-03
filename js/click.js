@@ -29,6 +29,31 @@ function convertFlatCoordsToSphereCoords(x, y) {
     };
 }
 
+function addPoint(lat, lng, size, color, subgeo) {
+
+    var phi = (90 - lat) * Math.PI / 180;
+    var theta = (180 - lng) * Math.PI / 180;
+
+    point.position.x = 200 * Math.sin(phi) * Math.cos(theta);
+    point.position.y = 200 * Math.cos(phi);
+    point.position.z = 200 * Math.sin(phi) * Math.sin(theta);
+
+    point.lookAt(mesh.position);
+
+    point.scale.z = Math.max( size, 0.1 ); // avoid non-invertible matrix
+    point.updateMatrix();
+
+    for (var i = 0; i < point.geometry.faces.length; i++) {
+
+      point.geometry.faces[i].color = color;
+
+    }
+    if(point.matrixAutoUpdate){
+      point.updateMatrix();
+    }
+    subgeo.merge(point.geometry, point.matrix);
+  }
+
 function loadingcomplete(){
     const body = document.querySelector('body');
     const loadingScreen = document.querySelector('.loading-screen');
@@ -88,78 +113,107 @@ function main(){
         // Add fog to the scene
         // scene.fog = new THREE.FogExp2( 0xe8eddf, 0.002 );
     
-        var light = new THREE.DirectionalLight( 0xffffff, 1 );
-        light.position.set( 1, 1, 1 ).normalize();
-        camera.add( light );
-        scene.add(camera);
+        // var light = new THREE.DirectionalLight( 0xffffff, 0.5 );
+        // light.position.set( 1, 1, 1 ).normalize();
+        // camera.add( light );
+        // scene.add(camera);
 
         // function addEarth() {
-        //     var spGeo = new THREE.SphereGeometry(100,50,50);
-        //     var planetTexture = THREE.ImageUtils.loadTexture( "./assets/images/EarthMercator.png" );
-        //     var mat2 =  new THREE.MeshPhongMaterial( {
-        //         map: planetTexture,
-        //         shininess: 0.2 } );
-        //     var sp = new THREE.Mesh(spGeo,mat2);
-        //     scene.add(sp);
+            var spGeo = new THREE.SphereGeometry(100,50,50);
+            var loader=new THREE.TextureLoader();
+            var planetTexture = loader.load( "./assets/additional_scripts/new_world.png",render );
+            // var mat2 =  new THREE.MeshBasicMaterial( {
+            //     map: planetTexture,
+            //     alphaTest: 0.1,
+            //     shininess: 0,
+            //     opacity:0.7,
+            //     transparent: true,
+            //     side: THREE.DoubleSide,
+            //     } );
+            // var sp = new THREE.Mesh(spGeo,mat2);
+            // scene.add(sp);
+
+
+
+            [THREE.BackSide, THREE.FrontSide].forEach((side) => {
+                var mat2 =  new THREE.MeshBasicMaterial( {
+                    map: planetTexture,
+                    alphaTest: 0.5,
+                    shininess: 0,
+                    opacity:1,
+                    transparent: true,
+                    side,
+                    } );
+                    var sp = new THREE.Mesh(spGeo,mat2);
+                    scene.add(sp);
+              });
         // }
         // addEarth();
         // 4. Add points to canvas
         // - Single geometry to contain all points.
-        const mergedGeometry = new THREE.Geometry();
-        // - Material that the dots will be made of.
-        const pointGeometry = new THREE.SphereGeometry(0.5, 5, 5);
-        const pointMaterial = new THREE.MeshBasicMaterial({
-        color: "#008000"
-        });
+        // const mergedGeometry = new THREE.Geometry();
+        // // - Material that the dots will be made of.
+        // const pointGeometry = new THREE.SphereGeometry(0.5, 5, 5);
+        // const pointMaterial = new THREE.MeshBasicMaterial({
+        // color: "#008000"
+        // });
 
-        for (let point of points) {
-            const { x, y, z } = convertFlatCoordsToSphereCoords(
-                point.x,
-                point.y,
-                width,
-                height
-            );
+        // for (let point of points) {
+        //     const { x, y, z } = convertFlatCoordsToSphereCoords(
+        //         point.x,
+        //         point.y,
+        //         width,
+        //         height
+        //     );
 
-            if (x && y && z) {
-                pointGeometry.translate(x, y, z);
-                mergedGeometry.merge(pointGeometry);
-                pointGeometry.translate(-x, -y, -z);
-            }
-        }
+        //     if (x && y && z) {
+        //         pointGeometry.translate(x, y, z);
+        //         pointGeometry.name="Earth"+x+","+y+","+z;
 
-        const globeShape = new THREE.Mesh(mergedGeometry, pointMaterial);
-        globeShape.name="Earth";
-        scene.add(globeShape);
-        
-        var geometry = new THREE.CircleBufferGeometry( 5, 5, 5 );
-
-        // for (let i = 0; i < 50; i++) {
-
-            var object = new THREE.Mesh( geometry, new THREE.MeshBasicMaterial( { color: Math.random() * 0xffffff } ) );
-
-            // object.position.x = Math.random() * 400 - 200;
-            // object.position.y = Math.random() * 400 - 200;
-            // object.position.x = point.x-1000;
-            // object.position.y = point.y;
-            // object.position.z = Math.random() * 400 - 200;
-
-            // object.rotation.x = Math.random() * 2 * Math.PI;
-            // object.rotation.y = Math.random() * 2 * Math.PI;
-            // object.rotation.z = Math.random() * 2 * Math.PI;
-
-            // object.scale.x = Math.random() + 0.5;
-            // object.scale.y = Math.random() + 0.5;
-            // object.scale.z = Math.random() + 0.5;
-            // mergedGeometry.merge(object);
-            object.name=1;
-            object.position.x = 0;
-            object.position.y = 0;
-            object.position.z = 100;
-            scene.add( object );
-
+        //         mergedGeometry.merge(pointGeometry);
+        //         pointGeometry.translate(-x, -y, -z);
+        //     }
         // }
-        // const globeShape = new THREE.Mesh(mergedGeometry);
+
+        // const globeShape = new THREE.Mesh(mergedGeometry, pointMaterial);
+        // // globeShape.name="Earth";
+        // globeShape.rotation.x=-4*Math.PI/180;
         // scene.add(globeShape);
+        
+        var geometry = new THREE.CircleBufferGeometry( 3, 5, 5 );
+
+        var object = new THREE.Mesh( geometry, new THREE.MeshBasicMaterial( { color: Math.random() * 0xffffff } ) );
+
+        var lat=0,lng=0;
+        const lonFudge = Math.PI * .5;
+        const latFudge = Math.PI * -0.135;
+        // var phi = Math.PI/2-THREE.MathUtils.degToRad(lat);
+        // var theta = THREE.MathUtils.degToRad(lng);
+
+        var phi = Math.PI/2-THREE.MathUtils.degToRad(lat);
+        var theta =THREE.MathUtils.degToRad(lng)+0;
+
+        object.position.x = 100 * Math.sin(phi) * Math.cos(theta);
+        object.position.y = 100 * Math.cos(phi);
+        object.position.z = 100 * Math.sin(phi) * Math.sin(theta);
+        object.name=1;
+        // object.lookAt(-sp.position);
+        object.rotation.x = 0;
+        object.rotation.y = 0;
+        object.rotation.z = 0;
+        scene.add( object );
+
+        // **********HELPERS********
+
+        // let plane = new THREE.Plane( new THREE.Vector3( 1,0,0 ), 0 );
+        // let helper = new THREE.PlaneHelper( plane, 200, 0xffff00 );
+        // scene.add( helper );
+        // plane = new THREE.Plane( new THREE.Vector3( 0,1,0 ), 0 );
+        // helper = new THREE.PlaneHelper( plane, 200, 0x00ff00 );
+        // scene.add( helper );
+        // plane = new THREE.Plane( new THREE.Vector3( 0,0,1 ), 0 );
+        // helper = new THREE.PlaneHelper( plane, 200, 0x00ff00 );
+        // scene.add( helper );
         
         document.addEventListener( 'mousemove', onDocumentMouseMove, false );
 
