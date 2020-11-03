@@ -190,7 +190,7 @@ function main(){
         object.position.x = 100 * Math.sin(phi) * Math.cos(theta);
         object.position.y = 100 * Math.cos(phi);
         object.position.z = 100 * Math.sin(phi) * Math.sin(theta);
-        object.name=1;
+        object.name="Australia";
         object.lookAt(0,0,0);
         // object.rotation.x = -theta ;
         // object.rotation.y = -phi;
