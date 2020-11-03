@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Surf</title>
+    <link rel="icon" type="image/svg" href="favicon.svg">
+    <link rel="apple-touch-icon" sizes="180x180" href="static/images/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="static/images/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="static/images/favicons/favicon-16x16.png">
+    <link href="https://fonts.googleapis.com/css2?family=Prata&display=swap" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500&display=swap" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/content.css">
+    <link rel="stylesheet" href="./css/nav.css">
+</head>
+
+<body>
+    <div class="loading-screen">
+        <h1 class="load-logo">SURF</h1>
+        <p class="tagline">Destinations made simple</p>
+        <img  class="boat" src="./assets/images/sailboat.svg" alt="">
+        <p class="loading">Loading...</p>
+    </div>
+    <header>
+        <div class="scroll">
+
+        </div>
+        <nav>
+            <div class="logo">
+                <a href="index.html" ><img src="./assets/images/surfnew.svg" alt="" /></a>
+            </div>
+                <ul class="navlinks">
+                <li><a href="#">Explore</a></li>
+                <li><a href="#">Feed</a></li>
+                <li class="mobile-signup"><a href="#">Sign-up</a></li>
+                <li><a href="#">Login</a></li>
+                <!-- <li class="cta"><a href="#">Signup</a></li> -->
+            </ul>
+            <a class="cta" href="#">Signup</a>
+            <div class="hamburger">
+                <span class="line1"></span>
+                <span class="line2"></span>
+                <span class="line3"></span>
+            </div>
+        </nav>
+    </header>
+
+
+    <main>
+        
+        <section class="container">
+            <article class="article-content">
+               
+            </article>
+        </section>
+
+    </main>
+   
+
+    <footer>
+        <div class="newsletter-section">
+            <div class="handpicked"></div>
+            <div class="newsletter">
+                <h6>Join The Club</h6>
+                <p>Sign up to our newsletter to receive product updates, exclusive offers and lucky draws.</p>
+                <form action="POST">
+                    <input type="text" placeholder="Name" id="name" required>    
+                    <input type="email" placeholder="Email" id="email" required><br>
+                    <button type="submit" name="newsletter-sumbit">Count Me In</button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="innerfooter">
+            <div class="moto">
+                <a href="index.html" class="logo"><img src="./assets/images/surfnew.svg" alt=""></a>
+                <p>Destinations made simple.</p>
+                <ul class="social">
+                    <li><a href="#"></a></li>
+                    <li><a href="#"></a></li>
+                    <li><a href="#"></a></li>
+                </ul>
+            </div>
+            <div class="footerlinks">
+                <ul>
+                    <h6>SITE</h6>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="reviews.html">Reviews</a></li>
+                    <li><a href="featured.html">Featured</a></li>
+                </ul>
+                
+                <ul>
+                    <h6>INFO</h6>
+                    <li><a href="privacy.html">Privacy</a></li>
+                    <li><a href="terms.html">Terms</a></li>
+                    <li><a href="bugreport.html">Bug Reports</a></li>
+                    <li><a href="join.html">Join Us</a></li>
+                </ul>
+            </div>
+    
+        </div>
+
+        <div class="copy"><br>
+            <p>&#169; 2020 Surf, Inc. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- **************** SCRIPTS ***************** -->
+    <script src="./js/menu.js"></script>
+    <!-- <script src="/js/3dmodel.js" type="module"></script> -->
+    <script>
+        const body = document.querySelector('body');
+        const loadingScreen = document.querySelector('.loading-screen');
+        // loadingScreen.classList.toggle('complete');
+        setTimeout(function(){ body.classList.add('complete'); }, 2000);
+        setTimeout(function(){ loadingScreen.classList.add('hide'); }, 2000);
+    </script>
+</body>
+
+</html>

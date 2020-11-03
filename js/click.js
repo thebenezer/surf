@@ -111,44 +111,33 @@ function main(){
         });
         orbitalcontrols();
         // Add fog to the scene
-        // scene.fog = new THREE.FogExp2( 0xe8eddf, 0.002 );
+        scene.fog = new THREE.FogExp2( 0xe8eddf, 0.002 );
     
-        // var light = new THREE.DirectionalLight( 0xffffff, 0.5 );
+        // var light = new THREE.DirectionalLight( 0xffffff, 1 );
         // light.position.set( 1, 1, 1 ).normalize();
         // camera.add( light );
         // scene.add(camera);
 
-        // function addEarth() {
-            var spGeo = new THREE.SphereGeometry(100,50,50);
-            var loader=new THREE.TextureLoader();
-            var planetTexture = loader.load( "./assets/additional_scripts/new_world.png",render );
-            // var mat2 =  new THREE.MeshBasicMaterial( {
-            //     map: planetTexture,
-            //     alphaTest: 0.1,
-            //     shininess: 0,
-            //     opacity:0.7,
-            //     transparent: true,
-            //     side: THREE.DoubleSide,
-            //     } );
-            // var sp = new THREE.Mesh(spGeo,mat2);
-            // scene.add(sp);
+        function addEarth() {
+        var spGeo = new THREE.SphereGeometry(100,50,50);
+        var loader=new THREE.TextureLoader();
+        var planetTexture = loader.load( "./assets/additional_scripts/new_world.png",render );
 
 
-
-            [THREE.BackSide, THREE.FrontSide].forEach((side) => {
-                var mat2 =  new THREE.MeshBasicMaterial( {
-                    map: planetTexture,
-                    alphaTest: 0.5,
-                    shininess: 0,
-                    opacity:1,
-                    transparent: true,
-                    side,
-                    } );
-                    var sp = new THREE.Mesh(spGeo,mat2);
-                    scene.add(sp);
-              });
-        // }
-        // addEarth();
+        [THREE.BackSide, THREE.FrontSide].forEach((side) => {
+            var mat2 =  new THREE.MeshBasicMaterial( {
+                map: planetTexture,
+                alphaTest: 0.7,
+                opacity:1,
+                transparent: true,
+                side,
+                } );
+                var sp = new THREE.Mesh(spGeo,mat2);
+                scene.add(sp);
+            });
+            planetTexture.dispose();
+        }
+        addEarth();
         // 4. Add points to canvas
         // - Single geometry to contain all points.
         // const mergedGeometry = new THREE.Geometry();
@@ -180,27 +169,32 @@ function main(){
         // globeShape.rotation.x=-4*Math.PI/180;
         // scene.add(globeShape);
         
-        var geometry = new THREE.CircleBufferGeometry( 3, 5, 5 );
+        var geometry = new THREE.CircleBufferGeometry( 2.5, 10 );
+        var mesh=new THREE.MeshBasicMaterial( {
+            shininess:0.5 , 
+            color: 0xffff00,
+            side: THREE.BackSide, 
+        });
+        
+        var object = new THREE.Mesh( geometry, mesh);
 
-        var object = new THREE.Mesh( geometry, new THREE.MeshBasicMaterial( { color: Math.random() * 0xffffff } ) );
-
-        var lat=0,lng=0;
+        var lat=-25,lng=133;
         const lonFudge = Math.PI * .5;
         const latFudge = Math.PI * -0.135;
         // var phi = Math.PI/2-THREE.MathUtils.degToRad(lat);
         // var theta = THREE.MathUtils.degToRad(lng);
 
         var phi = Math.PI/2-THREE.MathUtils.degToRad(lat);
-        var theta =THREE.MathUtils.degToRad(lng)+0;
+        var theta =THREE.MathUtils.degToRad(-lng)+0;
 
         object.position.x = 100 * Math.sin(phi) * Math.cos(theta);
         object.position.y = 100 * Math.cos(phi);
         object.position.z = 100 * Math.sin(phi) * Math.sin(theta);
         object.name=1;
-        // object.lookAt(-sp.position);
-        object.rotation.x = 0;
-        object.rotation.y = 0;
-        object.rotation.z = 0;
+        object.lookAt(0,0,0);
+        // object.rotation.x = -theta ;
+        // object.rotation.y = -phi;
+        // object.rotation.z = Math.PI/2;
         scene.add( object );
 
         // **********HELPERS********
