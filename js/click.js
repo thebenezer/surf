@@ -178,7 +178,7 @@ function main(){
             "India": [20.6,79],
             "UK": [55.57,-3.43]};
             
-        var placeGeometry = new THREE.CircleBufferGeometry( 2.5, 10 );
+        var placeGeometry = new THREE.CircleBufferGeometry( 5, 10 );
         
         for (const key in Places) {
             if (Places.hasOwnProperty(key)) {
@@ -220,24 +220,6 @@ function main(){
         raycaster.setFromCamera( mouse, camera );
 
         const intersects = raycaster.intersectObjects( scene.children );
-        // if ( intersects.length > 0 ) {
-
-        //     if ( INTERSECTED != intersects[ 0 ].object &&intersects[0].object.name!="Earth") {
-
-        //         if ( INTERSECTED ) ;//INTERSECTED.material.emissive.setHex( INTERSECTED.currentHex );
-
-        //         INTERSECTED = intersects[ 0 ].object;
-        //         INTERSECTED.currentHex = INTERSECTED.material.emissive.getHex();
-        //         INTERSECTED.material.emissive.setHex( 0xff00ff );
-        //         console.log(intersects[ 0 ].object.name);
-        //     }
-
-        // } else {
-
-        //     if ( INTERSECTED ) INTERSECTED.material.emissive.setHex( INTERSECTED.currentHex );
-
-        //     INTERSECTED = null;
-        // }
         if ( intersects.length > 0 ) {
 
             if ( INTERSECTED != intersects[ 0 ].object &&intersects[0].object.name!="Earth" ) {
