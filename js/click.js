@@ -2,15 +2,18 @@
 import * as THREE from './three/three.module.js';
 import { OrbitControls } from './three/OrbitControls.js';
 
+
+
 const canvas=document.querySelector('#c');
 
 let renderer,camera,scene,controls,raycaster;
-const width=canvas.clientWidth;
-const height=canvas.clientHeight;
+let mouse = new THREE.Vector2(), INTERSECTED;
 
 
-var mouse = new THREE.Vector2(), INTERSECTED;
-var radius = 100, theta = 0;
+
+
+
+
 const globeRadius = 100;
 const globeWidth = 4098 / 2;
 const globeHeight = 1968 / 2;
@@ -113,10 +116,10 @@ function main(){
         // Add fog to the scene
         scene.fog = new THREE.FogExp2( 0xe8eddf, 0.002 );
     
-        // var light = new THREE.DirectionalLight( 0xffffff, 1 );
-        // light.position.set( 1, 1, 1 ).normalize();
-        // camera.add( light );
-        // scene.add(camera);
+        var light = new THREE.DirectionalLight( 0xffffff, 1 );
+        light.position.set( 1, 1, 1 ).normalize();
+        camera.add( light );
+        scene.add(camera);
 
         function addEarth() {
         var spGeo = new THREE.SphereGeometry(100,50,50);
@@ -133,6 +136,7 @@ function main(){
                 side,
                 } );
                 var sp = new THREE.Mesh(spGeo,mat2);
+                sp.name="Earth";
                 scene.add(sp);
             });
             planetTexture.dispose();
@@ -169,45 +173,39 @@ function main(){
         // globeShape.rotation.x=-4*Math.PI/180;
         // scene.add(globeShape);
         
-        var geometry = new THREE.CircleBufferGeometry( 2.5, 10 );
-        var mesh=new THREE.MeshBasicMaterial( {
-            shininess:0.5 , 
-            color: 0xffff00,
-            side: THREE.BackSide, 
-        });
+        let Places={
+            "Australia": [-25.27,133.77],
+            "India": [20.6,79],
+            "UK": [55.57,-3.43]};
+            
+        var placeGeometry = new THREE.CircleBufferGeometry( 2.5, 10 );
         
-        var object = new THREE.Mesh( geometry, mesh);
+        for (const key in Places) {
+            if (Places.hasOwnProperty(key)) {
+                var placeMaterial=new THREE.MeshPhongMaterial( {
+                    color: 0xffff00,
+                    side: THREE.BackSide, 
+                });
+                const placeObject = new THREE.Mesh( placeGeometry, placeMaterial);
+                const Place = Places[key];
 
-        var lat=-25,lng=133;
-        const lonFudge = Math.PI * .5;
-        const latFudge = Math.PI * -0.135;
-        // var phi = Math.PI/2-THREE.MathUtils.degToRad(lat);
-        // var theta = THREE.MathUtils.degToRad(lng);
-
-        var phi = Math.PI/2-THREE.MathUtils.degToRad(lat);
-        var theta =THREE.MathUtils.degToRad(-lng)+0;
-
-        object.position.x = 100 * Math.sin(phi) * Math.cos(theta);
-        object.position.y = 100 * Math.cos(phi);
-        object.position.z = 100 * Math.sin(phi) * Math.sin(theta);
-        object.name="Australia";
-        object.lookAt(0,0,0);
-        // object.rotation.x = -theta ;
-        // object.rotation.y = -phi;
-        // object.rotation.z = Math.PI/2;
-        scene.add( object );
-
-        // **********HELPERS********
-
-        // let plane = new THREE.Plane( new THREE.Vector3( 1,0,0 ), 0 );
-        // let helper = new THREE.PlaneHelper( plane, 200, 0xffff00 );
-        // scene.add( helper );
-        // plane = new THREE.Plane( new THREE.Vector3( 0,1,0 ), 0 );
-        // helper = new THREE.PlaneHelper( plane, 200, 0x00ff00 );
-        // scene.add( helper );
-        // plane = new THREE.Plane( new THREE.Vector3( 0,0,1 ), 0 );
-        // helper = new THREE.PlaneHelper( plane, 200, 0x00ff00 );
-        // scene.add( helper );
+                var latitude=Place[0],longitude=Place[1];
+                var phi = Math.PI/2-THREE.MathUtils.degToRad(latitude);
+                var theta =THREE.MathUtils.degToRad(-longitude)+0;
+        
+                placeObject.name=key;
+                placeObject.position.x = 101 * Math.sin(phi) * Math.cos(theta);
+                placeObject.position.y = 101 * Math.cos(phi);
+                placeObject.position.z = 101 * Math.sin(phi) * Math.sin(theta);
+                placeObject.lookAt(0,0,0);
+                // placeObject.rotation.x = -theta ;
+                // placeObject.rotation.y = -phi;
+                // placeObject.rotation.z = Math.PI/2;
+                scene.add( placeObject );
+                                        
+                
+            }
+        }
         
         document.addEventListener( 'mousemove', onDocumentMouseMove, false );
 
@@ -217,35 +215,44 @@ function main(){
         animate();
     }
     function ray() {
-        // theta += 0.1;
-
-        // camera.position.x = radius * Math.sin( THREE.MathUtils.degToRad( theta ) );
-        // camera.position.y = radius * Math.sin( THREE.MathUtils.degToRad( theta ) );
-        // camera.position.z = radius * Math.cos( THREE.MathUtils.degToRad( theta ) );
-        // camera.lookAt( scene.position );
-
-        // camera.updateMatrixWorld();
-
-        // find intersections
+        
 
         raycaster.setFromCamera( mouse, camera );
 
-        var intersects = raycaster.intersectObjects( scene.children );
+        const intersects = raycaster.intersectObjects( scene.children );
+        // if ( intersects.length > 0 ) {
+
+        //     if ( INTERSECTED != intersects[ 0 ].object &&intersects[0].object.name!="Earth") {
+
+        //         if ( INTERSECTED ) ;//INTERSECTED.material.emissive.setHex( INTERSECTED.currentHex );
+
+        //         INTERSECTED = intersects[ 0 ].object;
+        //         INTERSECTED.currentHex = INTERSECTED.material.emissive.getHex();
+        //         INTERSECTED.material.emissive.setHex( 0xff00ff );
+        //         console.log(intersects[ 0 ].object.name);
+        //     }
+
+        // } else {
+
+        //     if ( INTERSECTED ) INTERSECTED.material.emissive.setHex( INTERSECTED.currentHex );
+
+        //     INTERSECTED = null;
+        // }
         if ( intersects.length > 0 ) {
 
-            if ( INTERSECTED != intersects[ 0 ].object ) {
+            if ( INTERSECTED != intersects[ 0 ].object &&intersects[0].object.name!="Earth" ) {
 
-                if ( INTERSECTED ) ;//INTERSECTED.material.emissive.setHex( INTERSECTED.currentHex );
+                if ( INTERSECTED ) INTERSECTED.material.emissive.setHex( INTERSECTED.currentHex );
 
-                // INTERSECTED = intersects[ 0 ].object;
-                // INTERSECTED.currentHex = INTERSECTED.material.emissive.getHex();
-                // INTERSECTED.material.emissive.setHex( 0xff0000 );
+                INTERSECTED = intersects[ 0 ].object;
+                INTERSECTED.currentHex = INTERSECTED.material.emissive.getHex();
+                INTERSECTED.material.emissive.setHex( 0xff00ff );
                 console.log(intersects[ 0 ].object.name);
             }
 
         } else {
 
-            // if ( INTERSECTED ) INTERSECTED.material.emissive.setHex( INTERSECTED.currentHex );
+            if ( INTERSECTED ) INTERSECTED.material.emissive.setHex( INTERSECTED.currentHex );
 
             INTERSECTED = null;
 
@@ -303,3 +310,18 @@ if (hasWebGL()) {
 else{
     console.log("Your browser does not support webGL");
 }
+
+
+
+
+        // **********HELPERS********
+
+        // let plane = new THREE.Plane( new THREE.Vector3( 1,0,0 ), 0 );
+        // let helper = new THREE.PlaneHelper( plane, 200, 0xffff00 );
+        // scene.add( helper );
+        // plane = new THREE.Plane( new THREE.Vector3( 0,1,0 ), 0 );
+        // helper = new THREE.PlaneHelper( plane, 200, 0x00ff00 );
+        // scene.add( helper );
+        // plane = new THREE.Plane( new THREE.Vector3( 0,0,1 ), 0 );
+        // helper = new THREE.PlaneHelper( plane, 200, 0x00ff00 );
+        // scene.add( helper );
