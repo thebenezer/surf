@@ -178,7 +178,7 @@ function main(){
             "India": [20.6,79],
             "UK": [55.57,-3.43]};
             
-        var placeGeometry = new THREE.CircleBufferGeometry( 5, 10 );
+        var placeGeometry = new THREE.CircleBufferGeometry( 3, 10 );
         
         for (const key in Places) {
             if (Places.hasOwnProperty(key)) {
@@ -207,7 +207,8 @@ function main(){
             }
         }
         
-        document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+        // document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+        document.addEventListener( 'click', onDocumentMouseMove, false );
 
         raycaster = new THREE.Raycaster();
 
