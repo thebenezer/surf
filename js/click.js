@@ -208,7 +208,7 @@ function main(){
         }
         
         // document.addEventListener( 'mousemove', onDocumentMouseMove, false );
-        document.addEventListener( 'click', onDocumentMouseMove, false );
+        canvas.addEventListener( 'click', onDocumentMouseMove, false );
 
         raycaster = new THREE.Raycaster();
 
