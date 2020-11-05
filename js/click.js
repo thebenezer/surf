@@ -121,27 +121,27 @@ function main(){
         camera.add( light );
         scene.add(camera);
 
-        function addEarth() {
-        var spGeo = new THREE.SphereGeometry(100,50,50);
-        var loader=new THREE.TextureLoader();
-        var planetTexture = loader.load( "./assets/additional_scripts/new_world.png",render );
+        // function addEarth() {
+        // var spGeo = new THREE.SphereGeometry(100,50,50);
+        // var loader=new THREE.TextureLoader();
+        // var planetTexture = loader.load( "./assets/additional_scripts/new_world.png",render );
 
 
-        [THREE.BackSide, THREE.FrontSide].forEach((side) => {
-            var mat2 =  new THREE.MeshBasicMaterial( {
-                map: planetTexture,
-                alphaTest: 0.7,
-                opacity:1,
-                transparent: true,
-                side,
-                } );
-                var sp = new THREE.Mesh(spGeo,mat2);
-                sp.name="Earth";
-                scene.add(sp);
-            });
-            planetTexture.dispose();
-        }
-        addEarth();
+        // [THREE.BackSide, THREE.FrontSide].forEach((side) => {
+        //     var mat2 =  new THREE.MeshBasicMaterial( {
+        //         map: planetTexture,
+        //         alphaTest: 0.7,
+        //         opacity:1,
+        //         transparent: true,
+        //         side,
+        //         } );
+        //         var sp = new THREE.Mesh(spGeo,mat2);
+        //         sp.name="Earth";
+        //         scene.add(sp);
+        //     });
+        //     planetTexture.dispose();
+        // }
+        // addEarth();
         // 4. Add points to canvas
         // - Single geometry to contain all points.
         // const mergedGeometry = new THREE.Geometry();
