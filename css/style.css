@@ -169,7 +169,17 @@ main {
     font-size: 1em;
 }
 #pop-info{
+    text-align: center;
     position: absolute;
+    cursor: pointer;
+    width: 200px;
+    height: 200px;
+    z-index: 1;
+    border: 0;
+    margin: 0;
+    background-color: rgb(157, 116, 174);
+    border-radius: 50%;
+    display: none;
 }
 .more{
     z-index: 1;

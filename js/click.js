@@ -5,6 +5,7 @@ import { OrbitControls } from './three/OrbitControls.js';
 
 
 const canvas=document.querySelector('#c');
+const pop_info=document.querySelector('#pop-info');
 
 let renderer,camera,scene,controls,raycaster;
 let mouse = new THREE.Vector2(), INTERSECTED;
@@ -123,7 +124,19 @@ function main(){
         let Places={
             "Australia": [-25.27,133.77],
             "India": [20.6,79],
-            "UK": [55.57,-3.43]};
+            "UK": [55.57,-3.43],
+            "Spain": [47.46,-3.75],
+            "USA": [37.09, -95.71],
+            "Mexico":[23.6345, -102.55],
+            "France":[46.22, 2.21],
+            "Turkey":[38.96, 35.24],
+            "Thailand":[15.87, 101],
+            "China":[35.86, 104.19],
+            "Germany":[51.16, 10.45],
+            "South Africa":[-30.56, 22.93],
+            "Brazil":[-14.23, -51.92],
+            "New Zeland": [-40.90, 174.88],
+            "Indonesia": [-0.79,113.92]};
             
         var placeGeometry = new THREE.CircleBufferGeometry( 2.5, 6 );
         
@@ -153,13 +166,33 @@ function main(){
         }
         
         canvas.addEventListener( 'mousemove', onDocumentMouseMove, false );
-        canvas.addEventListener( 'touchend', onDocumentTouchEnd, false );
+        canvas.addEventListener( 'touchstart', onDocumentTouchEnd, false );
         // document.addEventListener( 'touchend', onDocumentTouchEnd, false );
 
         raycaster = new THREE.Raycaster();
 
         loadingcomplete();
         animate();
+    }
+    function drawElement(obj){
+        let tempV=new THREE.Vector3();
+        // get the position of the center of the cube
+        obj.updateWorldMatrix(true, false);
+        obj.getWorldPosition(tempV);
+       
+        // get the normalized screen coordinate of that position
+        // x and y will be in the -1 to +1 range with x = -1 being
+        // on the left and y = -1 being on the bottom
+        tempV.project(camera);
+       
+        // convert the normalized position to CSS coordinates
+        const x = (tempV.x *  .5 + .5) * canvas.clientWidth;
+        const y = (tempV.y * -.5 + .5) * canvas.clientHeight;
+       
+        // move the elem to that position
+        pop_info.style.transform = `translate(-50%, -50%) translate(${x}px,${y}px)`;
+        pop_info.style.display = 'block';
+        pop_info.innerHTML=obj.name;
     }
     function ray() {
         
@@ -177,21 +210,27 @@ function main(){
                 INTERSECTED.currentHex = INTERSECTED.material.emissive.getHex();
                 INTERSECTED.material.emissive.setHex( 0xff00ff );
                 console.log(intersects[ 0 ].object.name);
-                if (controls.autoRotate)
+                drawElement(INTERSECTED);
+                if (controls.autoRotate){
                     controls.autoRotate = false;
+                }
             }
             else if(intersects[0].object.name=="Earth" ){
                 if ( INTERSECTED ) INTERSECTED.material.emissive.setHex( INTERSECTED.currentHex );
                 INTERSECTED=null;
-                if (controls.autoRotate==false)
+                if (controls.autoRotate==false){
                     controls.autoRotate = true;
+                    pop_info.style.display = 'none';
+                }
             }
 
         } else {
 
             if ( INTERSECTED ) INTERSECTED.material.emissive.setHex( INTERSECTED.currentHex );
-            if (controls.autoRotate==false)
+            if (controls.autoRotate==false){
                 controls.autoRotate = true;
+                // pop_info.style.display = 'none';
+            }
             INTERSECTED = null;
 
         }
