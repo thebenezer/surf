@@ -11,15 +11,39 @@
 		<script type="module">
 
 			import * as THREE from './js/three/three.module.js';
+			import { OrbitControls } from './js/three/OrbitControls.js';
 
 			import Stats from './js/three/stats.module.js';
 
 			var container, stats;
-			var camera, scene, raycaster, renderer;
+			var camera, scene, raycaster, renderer,controls;
+
+
+			var ORIGIN= new THREE.Vector3();
+			var DIR= new THREE.Vector3();
+			var ZERO= new THREE.Vector3(0,0,0);
 
 			var mouse = new THREE.Vector2(), INTERSECTED;
 			var radius = 100, theta = 0;
-
+			function orbitalcontrols() {
+				// Setup orbital controls
+				controls = new OrbitControls(camera, renderer.domElement);
+				controls.enableKeys = false;
+				controls.enablePan = false;
+				controls.enableZoom = true;
+				controls.enableDamping = true;
+				controls.dampingFactor = 0.05;
+				controls.enableRotate = true;
+				controls.autoRotate = true;
+				controls.autoRotateSpeed =1;
+				controls.screenSpacePanning = true;
+				controls.minDistance = 200;
+				// controls.maxDistance = 500;
+				if(document.documentElement.clientWidth>768)  
+					camera.position.z = 250;
+				else
+					camera.position.z = 300;
+			}
 			init();
 			animate();
 
@@ -29,6 +53,7 @@
 				document.body.appendChild( container );
 
 				camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 1, 10000 );
+				camera.position.z = radius;
 
 				scene = new THREE.Scene();
 				scene.background = new THREE.Color( 0xf0f0f0 );
@@ -38,7 +63,39 @@
 				scene.add( light );
 
 				var geometry = new THREE.BoxBufferGeometry( 20, 20, 20 );
+				let Places={
+					"Australia": [-25.27,133.77],
+					"India": [20.6,79],
+					"UK": [55.57,-3.43]};
+					
+				var placeGeometry = new THREE.CircleBufferGeometry( 10, 10 );
+				
+				// for (const key in Places) {
+				// 	if (Places.hasOwnProperty(key)) {
+				// 		var placeMaterial=new THREE.MeshPhongMaterial( {
+				// 			color: 0xffff00,
+				// 			side: THREE.BackSide, 
+				// 		});
+				// 		var placeObject = new THREE.Mesh( placeGeometry, new THREE.MeshLambertMaterial( { color: Math.random() * 0xffffff } ) );
+				// 		const Place = Places[key];
 
+				// 		var latitude=Place[0],longitude=Place[1];
+				// 		var phi = Math.PI/2-THREE.MathUtils.degToRad(latitude);
+				// 		var theta =THREE.MathUtils.degToRad(-longitude)+0;
+				
+				// 		placeObject.name=key;
+				// 		placeObject.position.x = 101 * Math.sin(phi) * Math.cos(theta);
+				// 		placeObject.position.y = 101 * Math.cos(phi);
+				// 		placeObject.position.z = 101 * Math.sin(phi) * Math.sin(theta);
+				// 		placeObject.lookAt(0,0,0);
+				// 		// placeObject.rotation.x = -theta ;
+				// 		// placeObject.rotation.y = -phi;
+				// 		// placeObject.rotation.z = Math.PI/2;
+				// 		scene.add( placeObject );
+												
+						
+				// 	}
+				// }
 				for ( var i = 0; i < 2000; i ++ ) {
 
 					var object = new THREE.Mesh( geometry, new THREE.MeshLambertMaterial( { color: Math.random() * 0xffffff } ) );
@@ -65,11 +122,13 @@
 				renderer.setPixelRatio( window.devicePixelRatio );
 				renderer.setSize( window.innerWidth, window.innerHeight );
 				container.appendChild( renderer.domElement );
+				orbitalcontrols();
 
 				stats = new Stats();
 				container.appendChild( stats.dom );
 
-				document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+				// document.addEventListener( 'click', onDocumentMouseMove, false );
+				document.addEventListener( 'touchend', onDocumentMouseMove, false );
 
 				//
 
@@ -89,9 +148,14 @@
 			function onDocumentMouseMove( event ) {
 
 				event.preventDefault();
-
-				mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
-				mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
+				// ORIGIN=camera.position;
+				// DIR.subVectors( ORIGIN, ZERO ).normalize();
+				// mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
+				// mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
+				var touches = event.changedTouches;
+				mouse.x = ( touches[0].pageX / window.innerWidth ) * 2 - 1;
+				mouse.y = - ( touches[0].pageY / window.innerHeight ) * 2 + 1;
+				// window.alert(mouse.x+" "+mouse.y)
 
 			}
 
@@ -100,23 +164,24 @@
 			function animate() {
 
 				requestAnimationFrame( animate );
+				controls.update();// only required if controls.enableDamping = true, or if controls.autoRotate = true
 
 				render();
 				stats.update();
 
 			}
 			function ray() {
-				theta += 0.1;
+				// theta += 0.1;
 
-				camera.position.x = radius * Math.sin( THREE.MathUtils.degToRad( theta ) );
-				camera.position.y = radius * Math.sin( THREE.MathUtils.degToRad( theta ) );
-				camera.position.z = radius * Math.cos( THREE.MathUtils.degToRad( theta ) );
-				camera.lookAt( scene.position );
+				// camera.position.x = radius*2 * Math.sin( THREE.MathUtils.degToRad( theta ) );
+				// camera.position.y = radius*2 * Math.sin( THREE.MathUtils.degToRad( theta ) );
+				// camera.position.z = radius*2 * Math.cos( THREE.MathUtils.degToRad( theta ) );
+				// camera.lookAt( scene.position );
 
-				camera.updateMatrixWorld();
+				// camera.updateMatrixWorld();
 
 				// find intersections
-
+				// raycaster.set( ORIGIN, DIR );
 				raycaster.setFromCamera( mouse, camera );
 
 				var intersects = raycaster.intersectObjects( scene.children );
@@ -146,7 +211,7 @@
 
 				ray();
 				renderer.render( scene, camera );
-
+				// console.log(camera.position)
 			}
 
 		</script>

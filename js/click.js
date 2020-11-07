@@ -11,52 +11,6 @@ let mouse = new THREE.Vector2(), INTERSECTED;
 
 
 
-
-
-
-const globeRadius = 100;
-const globeWidth = 4098 / 2;
-const globeHeight = 1968 / 2;
-
-function convertFlatCoordsToSphereCoords(x, y) {
-    let latitude = ((x - globeWidth) / globeWidth) * -180;
-    let longitude = ((y - globeHeight) / globeHeight) * -90;
-    latitude = (latitude * Math.PI) / 180;
-    longitude = (longitude * Math.PI) / 180;
-    const radius = Math.cos(longitude) * globeRadius;
-
-    return {
-    x: Math.cos(latitude) * radius,
-    y: Math.sin(longitude) * globeRadius,
-    z: Math.sin(latitude) * radius
-    };
-}
-
-function addPoint(lat, lng, size, color, subgeo) {
-
-    var phi = (90 - lat) * Math.PI / 180;
-    var theta = (180 - lng) * Math.PI / 180;
-
-    point.position.x = 200 * Math.sin(phi) * Math.cos(theta);
-    point.position.y = 200 * Math.cos(phi);
-    point.position.z = 200 * Math.sin(phi) * Math.sin(theta);
-
-    point.lookAt(mesh.position);
-
-    point.scale.z = Math.max( size, 0.1 ); // avoid non-invertible matrix
-    point.updateMatrix();
-
-    for (var i = 0; i < point.geometry.faces.length; i++) {
-
-      point.geometry.faces[i].color = color;
-
-    }
-    if(point.matrixAutoUpdate){
-      point.updateMatrix();
-    }
-    subgeo.merge(point.geometry, point.matrix);
-  }
-
 function loadingcomplete(){
     const body = document.querySelector('body');
     const loadingScreen = document.querySelector('.loading-screen');
@@ -67,11 +21,33 @@ function loadingcomplete(){
 function onDocumentMouseMove( event ) {
 
     event.preventDefault();
-
+    // mouse.x = ( ( event.clientX - renderer.domElement.offsetLeft ) / renderer.domElement.clientWidth ) * 2 - 1;
+    // mouse.y = - ( ( event.clientY - renderer.domElement.offsetTop ) / renderer.domElement.clientHeight ) * 2 + 1;
     mouse.x = ( event.clientX / canvas.clientWidth ) * 2 - 1;
     mouse.y = - ( event.clientY / canvas.clientHeight ) * 2 + 1;
 
 }
+function onDocumentTouchEnd( event ) {
+
+    event.preventDefault();
+    var touches = event.changedTouches;
+    mouse.x = ( touches[0].pageX / canvas.clientWidth ) * 2 - 1;
+    mouse.y = - ( touches[0].pageY / canvas.clientHeight ) * 2 + 1;
+    // mouse.x = ( touches[0].pageX / window.innerWidth ) * 2 - 1;
+    // mouse.y = - ( touches[0].pageY / window.innerHeight ) * 2 + 1;
+}
+// function onDocumentTouchEnd( event ) {
+
+//     event.preventDefault();
+//     mouse.x =-1;
+//     mouse.y = -1;
+//     // mouse.x = ( touches[0].pageX / window.innerWidth ) * 2 - 1;
+//     // mouse.y = - ( touches[0].pageY / window.innerHeight ) * 2 + 1;
+// }
+
+console.log(canvas.clientHeight,canvas.clientWidth);
+console.log(window.innerHeight,window.innerWidth);
+
 
 function orbitalcontrols() {
     // Setup orbital controls
@@ -94,15 +70,15 @@ function orbitalcontrols() {
 }
 
 function main(){
-    window
-        .fetch("./js/points.json")
-        .then(response => response.json())
-        .then(data => {
-        init(data.points);
-        });
-    // init()
+    // window
+    //     .fetch("./js/points.json")
+    //     .then(response => response.json())
+    //     .then(data => {
+    //     init(data.points);
+    //     });
+    init()
 
-    function init(points) {
+    function init() {
         // Setup scene
         scene = new THREE.Scene();
         // Setup camera
@@ -112,6 +88,7 @@ function main(){
         canvas,
         antialias: true
         });
+        // container.appendChild( renderer.domElement );
         orbitalcontrols();
         // Add fog to the scene
         scene.fog = new THREE.FogExp2( 0xe8eddf, 0.002 );
@@ -121,69 +98,39 @@ function main(){
         camera.add( light );
         scene.add(camera);
 
-        // function addEarth() {
-        // var spGeo = new THREE.SphereGeometry(100,50,50);
-        // var loader=new THREE.TextureLoader();
-        // var planetTexture = loader.load( "./assets/additional_scripts/new_world.png",render );
+        function addEarth() {
+        var spGeo = new THREE.SphereGeometry(100,50,50);
+        var loader=new THREE.TextureLoader();
+        var planetTexture = loader.load( "./assets/additional_scripts/new_world.png",render );
 
 
-        // [THREE.BackSide, THREE.FrontSide].forEach((side) => {
-        //     var mat2 =  new THREE.MeshBasicMaterial( {
-        //         map: planetTexture,
-        //         alphaTest: 0.7,
-        //         opacity:1,
-        //         transparent: true,
-        //         side,
-        //         } );
-        //         var sp = new THREE.Mesh(spGeo,mat2);
-        //         sp.name="Earth";
-        //         scene.add(sp);
-        //     });
-        //     planetTexture.dispose();
-        // }
-        // addEarth();
-        // 4. Add points to canvas
-        // - Single geometry to contain all points.
-        // const mergedGeometry = new THREE.Geometry();
-        // // - Material that the dots will be made of.
-        // const pointGeometry = new THREE.SphereGeometry(0.5, 5, 5);
-        // const pointMaterial = new THREE.MeshBasicMaterial({
-        // color: "#008000"
-        // });
-
-        // for (let point of points) {
-        //     const { x, y, z } = convertFlatCoordsToSphereCoords(
-        //         point.x,
-        //         point.y,
-        //         width,
-        //         height
-        //     );
-
-        //     if (x && y && z) {
-        //         pointGeometry.translate(x, y, z);
-        //         pointGeometry.name="Earth"+x+","+y+","+z;
-
-        //         mergedGeometry.merge(pointGeometry);
-        //         pointGeometry.translate(-x, -y, -z);
-        //     }
-        // }
-
-        // const globeShape = new THREE.Mesh(mergedGeometry, pointMaterial);
-        // // globeShape.name="Earth";
-        // globeShape.rotation.x=-4*Math.PI/180;
-        // scene.add(globeShape);
-        
+        [THREE.BackSide, THREE.FrontSide].forEach((side) => {
+            var mat2 =  new THREE.MeshBasicMaterial( {
+                map: planetTexture,
+                alphaTest: 0.7,
+                opacity:1,
+                transparent: true,
+                side,
+                } );
+                var sp = new THREE.Mesh(spGeo,mat2);
+                sp.name="Earth";
+                scene.add(sp);
+            });
+            planetTexture.dispose();
+        }
+        addEarth();
+       
         let Places={
             "Australia": [-25.27,133.77],
             "India": [20.6,79],
             "UK": [55.57,-3.43]};
             
-        var placeGeometry = new THREE.CircleBufferGeometry( 5, 10 );
+        var placeGeometry = new THREE.CircleBufferGeometry( 2.5, 6 );
         
         for (const key in Places) {
             if (Places.hasOwnProperty(key)) {
                 var placeMaterial=new THREE.MeshPhongMaterial( {
-                    color: 0xffff00,
+                    color: 0x000000,
                     side: THREE.BackSide, 
                 });
                 const placeObject = new THREE.Mesh( placeGeometry, placeMaterial);
@@ -194,21 +141,20 @@ function main(){
                 var theta =THREE.MathUtils.degToRad(-longitude)+0;
         
                 placeObject.name=key;
+                // placeObject.rotation.y=Math.PI/6;
                 placeObject.position.x = 101 * Math.sin(phi) * Math.cos(theta);
                 placeObject.position.y = 101 * Math.cos(phi);
                 placeObject.position.z = 101 * Math.sin(phi) * Math.sin(theta);
                 placeObject.lookAt(0,0,0);
-                // placeObject.rotation.x = -theta ;
-                // placeObject.rotation.y = -phi;
-                // placeObject.rotation.z = Math.PI/2;
                 scene.add( placeObject );
                                         
                 
             }
         }
         
-        document.addEventListener( 'mousemove', onDocumentMouseMove, false );
-        // canvas.addEventListener( 'click', onDocumentMouseMove, false );
+        canvas.addEventListener( 'mousemove', onDocumentMouseMove, false );
+        canvas.addEventListener( 'touchend', onDocumentTouchEnd, false );
+        // document.addEventListener( 'touchend', onDocumentTouchEnd, false );
 
         raycaster = new THREE.Raycaster();
 
@@ -231,12 +177,21 @@ function main(){
                 INTERSECTED.currentHex = INTERSECTED.material.emissive.getHex();
                 INTERSECTED.material.emissive.setHex( 0xff00ff );
                 console.log(intersects[ 0 ].object.name);
+                if (controls.autoRotate)
+                    controls.autoRotate = false;
+            }
+            else if(intersects[0].object.name=="Earth" ){
+                if ( INTERSECTED ) INTERSECTED.material.emissive.setHex( INTERSECTED.currentHex );
+                INTERSECTED=null;
+                if (controls.autoRotate==false)
+                    controls.autoRotate = true;
             }
 
         } else {
 
             if ( INTERSECTED ) INTERSECTED.material.emissive.setHex( INTERSECTED.currentHex );
-
+            if (controls.autoRotate==false)
+                controls.autoRotate = true;
             INTERSECTED = null;
 
         }

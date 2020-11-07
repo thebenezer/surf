@@ -146,7 +146,7 @@ main {
 }
 .earth canvas{
     /* background-image: url("/assets/images/gray.svg"); */
-    position: fixed;
+    position: static;
     flex: 2;
     outline: none;
     height: 100%;
@@ -167,6 +167,9 @@ main {
 }
 .heading h2{
     font-size: 1em;
+}
+#pop-info{
+    position: absolute;
 }
 .more{
     z-index: 1;
