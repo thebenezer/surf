@@ -15,63 +15,7 @@
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/content.css">
     <link rel="stylesheet" href="./css/nav.css">
-    <style>
-  
-        
-        /* The popup form - hidden by default */
-        .form-popup {
-          display: none;
-          position: fixed;
-          bottom: 0;
-          right: 15px;
-          border: 3px solid #f1f1f1;
-          z-index: 1;
-        }
-        
-        /* Add styles to the form container */
-        .form-container {
-          max-width: 300px;
-          padding: 10px;
-          background-color: white;
-        }
-        
-        /* Full-width input fields */
-        .form-container input[type=text], .form-container input[type=password] {
-          width: 100%;
-          padding: 15px;
-          margin: 5px 0 22px 0;
-          border: none;
-          background: #f1f1f1;
-        }
-        
-        /* When the inputs get focus, do something */
-        .form-container input[type=text]:focus, .form-container input[type=password]:focus {
-          background-color: #ddd;
-          outline: none;
-        }
-        
-        /* Set a style for the submit/login button */
-        .form-container .btn {
-          background-color: #4CAF50;
-          color: white;
-          padding: 16px 20px;
-          border: none;
-          cursor: pointer;
-          width: 100%;
-          margin-bottom:10px;
-          opacity: 0.8;
-        }
-        
-        /* Add a red background color to the cancel button */
-        .form-container .cancel {
-          background-color: red;
-        }
-        
-        /* Add some hover effects to buttons */
-        .form-container .btn:hover, .open-button:hover {
-          opacity: 1;
-        }
-        </style>
+    <!-- <link rel="stylesheet" href="./css/form.css"> -->
 </head>
 
 <body>
@@ -92,45 +36,147 @@
                 <ul class="navlinks">
                 <li><a href="#">Explore</a></li>
                 <li><a href="#">Feed</a></li>
-                <li class="mobile-signup"><a onclick="openForm()">Sign-up</a></li>
-                <li><a href="#">Login</a></li>
+                <li class="mobile-signup"><a onclick="openSignupForm()">Sign-up</a></li>
+                <li><a href="#" onclick="openLoginForm()">Login</a></li>
                 <!-- <li class="cta"><a href="#">Signup</a></li> -->
             </ul>
-            <a class="cta" onclick="openForm()">Signup</a>
+            <a class="cta" onclick="openSignupForm()">Signup</a>
             <div class="hamburger">
                 <span class="line1"></span>
                 <span class="line2"></span>
                 <span class="line3"></span>
             </div>
-        </nav>
+         </nav>
     </header>
+
+    <!-- ****************** LOGIN FORM ******************* -->
     
-<!-- <button class="open-button" onclick="openForm()">Open Form</button> -->
-
-<div class="form-popup" id="myForm">
-  <form action="/action_page.php" class="form-container">
-    <h1>Login</h1>
-
-    <label for="email"><b>Email</b></label>
-    <input type="text" placeholder="Enter Email" name="email" required>
-
-    <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required>
-
-    <button type="submit" class="btn">Login</button>
-    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
-  </form>
-</div>
-<script>
-    function openForm() {
-      document.getElementById("myForm").style.display = "block";
-    }
+    <div class="loginwindow">
+        <form action="#" class="ls-form">
+            <div class="close-form" onclick="closeForm()">
+                <span class="close-l1"></span>
+                <span class="close-l2"></span>
+            </div>
+            <h1>Login</h1>
+           
     
-    function closeForm() {
-      document.getElementById("myForm").style.display = "none";
-    }
-    </script>
+            <label class="ls-label">
+                <input type="email" required />
+                <div class="ls-label-text">E-mail</div>
+            </label>
+            <label class="ls-label">
+                <input type="password" required />
+                <div class="ls-label-text">Password</div>
+            </label>
+    
+            <button type="submit" class="btn">Login</button>
+            <p>New to SURF?</p>
+            <div type="button" class="secondbtn" onclick="openSignupForm()">Sign-up</div>
+        </form>
+        </div>
+    </div>
 
+    <!-- ****************** SIGNUP FORM ******************* -->
+
+    <div class="signupwindow">
+        <form action="#" class="ls-form">
+            <div class="close-form" onclick="closeForm()">
+                <span class="close-l1"></span>
+                <span class="close-l2"></span>
+            </div>
+            <h1>Signup</h1>
+           
+    
+            <label class="ls-label">
+                <input type="text" required />
+                <div class="ls-label-text">Username</div>
+            </label>
+            <label class="ls-label">
+                <input type="email" required />
+                <div class="ls-label-text">E-mail</div>
+            </label>
+            <label class="ls-label">
+                <input type="password" required />
+                <div class="ls-label-text">Password</div>
+            </label>
+            <label class="ls-label">
+                <input type="password" required />
+                <div class="ls-label-text">Confirm Password</div>
+            </label>
+
+            <button type="button" class="btn" >Sign-up</button>    
+            <p>Have an account already?</p>
+            <div type="submit" class="secondbtn" onclick="openLoginForm()">Login</div>
+        </form>
+        </div>
+    </div>
+
+    <!-- ****************** ALL CONTENT HERE ******************* -->
+
+
+    <!-- ****************** LOGIN FORM ******************* -->
+    
+    <div class="loginwindow">
+        <form action="#" class="ls-form">
+            <div class="close-form" onclick="closeForm()">
+                <span class="close-l1"></span>
+                <span class="close-l2"></span>
+            </div>
+            <h1>Login</h1>
+           
+    
+            <label class="ls-label">
+                <input type="email" required />
+                <div class="ls-label-text">E-mail</div>
+            </label>
+            <label class="ls-label">
+                <input type="password" required />
+                <div class="ls-label-text">Password</div>
+            </label>
+    
+            <button type="submit" class="btn">Login</button>
+            <p>New to SURF?</p>
+            <div type="button" class="secondbtn" onclick="openSignupForm()">Sign-up</div>
+        </form>
+        </div>
+    </div>
+
+    <!-- ****************** SIGNUP FORM ******************* -->
+
+    <div class="signupwindow">
+        <form action="#" class="ls-form">
+            <div class="close-form" onclick="closeForm()">
+                <span class="close-l1"></span>
+                <span class="close-l2"></span>
+            </div>
+            <h1>Signup</h1>
+           
+    
+            <label class="ls-label">
+                <input type="text" required />
+                <div class="ls-label-text">Username</div>
+            </label>
+            <label class="ls-label">
+                <input type="email" required />
+                <div class="ls-label-text">E-mail</div>
+            </label>
+            <label class="ls-label">
+                <input type="password" required />
+                <div class="ls-label-text">Password</div>
+            </label>
+            <label class="ls-label">
+                <input type="password" required />
+                <div class="ls-label-text">Confirm Password</div>
+            </label>
+
+            <button type="button" class="btn" >Sign-up</button>    
+            <p>Have an account already?</p>
+            <div type="submit" class="secondbtn" onclick="openLoginForm()">Login</div>
+        </form>
+        </div>
+    </div>
+
+    <!-- ****************** ALL CONTENT HERE ******************* -->
 
     <main>
         <div class="page-heading">
@@ -259,6 +305,7 @@
 
     </main>
    
+    <!-- ****************** FOOTER ******************* -->
 
     <footer>
         <div class="newsletter-section">
@@ -310,6 +357,7 @@
     </footer>
 
     <!-- **************** SCRIPTS ***************** -->
+    <script src="./js/forms.js"></script>
     <script src="./js/menu.js"></script>
     <!-- <script src="/js/3dmodel.js" type="module"></script> -->
     <script>

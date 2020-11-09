@@ -1,3 +1,130 @@
+/* *************LOGIN SIGNUP FORM STYLING************** */
+
+.loginwindow,.signupwindow{
+    position: fixed;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    top: 0%;
+    left: 0%;
+    /* opacity: 0; */
+    background-color: #ffffffb9;
+    transition: all 0.5s;
+    text-align: center;
+    display: none;
+    justify-content: center;
+}
+
+/* Add styles to the form container */
+.ls-form {
+    margin: auto;
+    max-width: 300px;
+    padding: 10px;
+    border-radius: 4px;
+    background-color: white;
+}
+
+.ls-form p{
+    font-size: 14px;
+}
+
+.close-form{
+    position: relative;
+    left: 93%;
+    cursor: pointer;
+}
+.close-l1,.close-l2{
+    display: block;
+    position: absolute;
+    content: "";
+    width: 25px;
+    height: 2px;
+    background-color: black;
+    margin: 5px 0 5px 0;
+    transition: all 0.5s ease;
+}
+.close-l1{
+    transform: rotateZ(-45deg);
+}
+.close-l2{
+    transform: rotateZ(45deg);
+    /* width: 15px; */
+    /* transform: translateX(10px); */
+}
+
+
+.ls-label {
+    display: block;
+    letter-spacing: 4px;
+    padding-top: 30px;
+    text-align: left;
+}
+.ls-label-text {
+    color:#000000;
+    cursor: text;
+    font-size: 16px;
+    line-height: 20px;
+    text-transform: uppercase;
+    transform: translateY(-34px);
+    transition: all 0.3s;
+    text-align: left;
+}
+
+.ls-label-text:focus {
+    color: #000000;
+    font-size: 13px;
+    transform: translateY(-74px);
+}
+
+.ls-label input {
+    border: 0;
+    border-bottom: 2px solid #000000;
+    color: #000000;
+    font-size: 25px;
+    letter-spacing: -1px;
+    outline: 0;
+    text-align: left;
+    transition: all 0.3s;
+    width: 100%;
+}
+
+.ls-label input:focus+.ls-label-text {
+    color: #000000;
+    font-size: 13px;
+    transform: translateY(-74px);
+}
+
+.ls-label input:valid+.ls-label-text,.ls-label input:active+.ls-label-text {
+    font-size: 13px;
+    transform: translateY(-74px);
+}
+
+/* Set a style for the submit/login button */
+.ls-form .btn,.ls-form .secondbtn {
+    background-color: rgb(0, 179, 66);
+    color: white;
+    padding: 16px 20px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom:10px;
+    opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.ls-form .secondbtn {
+    background-color: #4c9daf;
+    /* height: 40px; */
+    padding: 12px 20px;
+    font-size: 13px;
+}
+
+/* Add some hover effects to buttons */
+.loginsignupforms .btn:hover, .open-button:hover {
+  opacity: 1;
+}
+
 /* *************HEADER STYLING************** */
 nav{
     display: flex;
@@ -37,6 +164,7 @@ nav{
     /* margin-right: 0; */
     margin: auto 0 auto 90px;
     padding: 10px;
+    cursor: pointer;
     border-radius: 20px;
     color: black;
     background-color: darkorange;
@@ -56,6 +184,7 @@ nav{
 }
 
 @media screen and (max-width:768px){
+    
     .logo{
         z-index: 1;
     }
