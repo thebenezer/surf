@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="./css/content.css">
     <link rel="stylesheet" href="./css/nav.css">
     <style>
+  
         
         /* The popup form - hidden by default */
         .form-popup {
@@ -24,7 +25,7 @@
           bottom: 0;
           right: 15px;
           border: 3px solid #f1f1f1;
-          z-index: 9;
+          z-index: 1;
         }
         
         /* Add styles to the form container */
@@ -91,13 +92,11 @@
                 <ul class="navlinks">
                 <li><a href="#">Explore</a></li>
                 <li><a href="#">Feed</a></li>
-                <!-- <li class="mobile-signup"></li><a href="#">Sign-up</a></li> -->
-                <li class="mobile-signup"><button class="open-button" onclick="openForm()">Open Form</button></li>
+                <li class="mobile-signup"><a onclick="openForm()">Sign-up</a></li>
                 <li><a href="#">Login</a></li>
                 <!-- <li class="cta"><a href="#">Signup</a></li> -->
             </ul>
             <a class="cta" onclick="openForm()">Signup</a>
-            <!-- <button class="cta" >Open Form</button> -->
             <div class="hamburger">
                 <span class="line1"></span>
                 <span class="line2"></span>
@@ -105,31 +104,33 @@
             </div>
         </nav>
     </header>
-    <!-- <button class="open-button" onclick="openForm()">Open Form</button> -->
+    
+<!-- <button class="open-button" onclick="openForm()">Open Form</button> -->
 
-    <div class="form-popup" id="myForm">
-      <form action="/action_page.php" class="form-container">
-        <h1>Login</h1>
+<div class="form-popup" id="myForm">
+  <form action="/action_page.php" class="form-container">
+    <h1>Login</h1>
+
+    <label for="email"><b>Email</b></label>
+    <input type="text" placeholder="Enter Email" name="email" required>
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="psw" required>
+
+    <button type="submit" class="btn">Login</button>
+    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+  </form>
+</div>
+<script>
+    function openForm() {
+      document.getElementById("myForm").style.display = "block";
+    }
     
-        <label for="email"><b>Email</b></label>
-        <input type="text" placeholder="Enter Email" name="email" required>
-    
-        <label for="psw"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="psw" required>
-    
-        <button type="submit" class="btn">Login</button>
-        <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
-      </form>
-    </div>
-    <script>
-        function openForm() {
-          document.getElementById("myForm").style.display = "block";
-        }
-        
-        function closeForm() {
-          document.getElementById("myForm").style.display = "none";
-        }
-        </script>
+    function closeForm() {
+      document.getElementById("myForm").style.display = "none";
+    }
+    </script>
+
 
     <main>
         <div class="page-heading">

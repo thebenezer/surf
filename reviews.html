@@ -1,220 +1,209 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<title>Raycaster</title>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-	</head>
-	<body>
 
-	
-		<script type="module">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Surf</title>
+    <link rel="icon" type="image/svg" href="favicon.svg">
+    <link rel="apple-touch-icon" sizes="180x180" href="static/images/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="static/images/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="static/images/favicons/favicon-16x16.png">
+    <link href="https://fonts.googleapis.com/css2?family=Prata&display=swap" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500&display=swap" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/content.css">
+    <link rel="stylesheet" href="./css/nav.css">
+    <link rel="stylesheet" href="./css/testimonial.css">
+</head>
 
-			import * as THREE from './js/three/three.module.js';
-			import { OrbitControls } from './js/three/OrbitControls.js';
+<body>
+    <div class="loading-screen">
+        <h1 class="load-logo">SURF</h1>
+        <p class="tagline">Destinations made simple</p>
+        <img  class="boat" src="./assets/images/sailboat.svg" alt="">
+        <p class="loading">Loading...</p>
+    </div>
+    <header>
+        <div class="scroll">
 
-			import Stats from './js/three/stats.module.js';
+        </div>
+        <nav>
+            <div class="logo">
+                <a href="index.html" ><img src="./assets/images/surf.svg" alt="" /></a>
+            </div>
+                <ul class="navlinks">
+                <li><a href="#">Explore</a></li>
+                <li><a href="#">Feed</a></li>
+                <li class="mobile-signup"><a href="#">Sign-up</a></li>
+                <li><a href="#">Login</a></li>
+                <!-- <li class="cta"><a href="#">Signup</a></li> -->
+            </ul>
+            <a class="cta" href="#">Signup</a>
+            <div class="hamburger">
+                <span class="line1"></span>
+                <span class="line2"></span>
+                <span class="line3"></span>
+            </div>
+        </nav>
+    </header>
 
-			var container, stats;
-			var camera, scene, raycaster, renderer,controls;
 
+	<main>
+        <br><br>
+        <h1 style="font-size: 3em;text-align: center; margin-top: 10vh;">Reviews</h1>
+        <section class="container">
+            <div class="testimonials">
+                
+                <div class="test-body">
+                    <div class="item">
+                        <img src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png">
+                        <div class="name">Name1</div>
+                        <small class="desig">Bangalore</small>
+                        <div class="share">
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star-o" aria-hidden="true"></i>
+                        </div>
+                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Esse, vitae? Adipisci possimus ullam esse exercitationem dignissimos aspernatur quo maiores assumenda molestias. Neque reiciendis iusto natus. Quis quia est incidunt enim!</p>
+                    </div>
+                    <div class="item">
+                        <img src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png">
+                        <div class="name">Name2</div>
+                        <small class="desig">London</small>
+                        <div class="share">
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                        </div>
+                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Esse, vitae? Adipisci possimus ullam esse exercitationem dignissimos aspernatur quo maiores assumenda molestias. Neque reiciendis iusto natus. Quis quia est incidunt enim!</p>
+                    </div>
+                    <div class="item">
+                        <img src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png">
+                        <div class="name">Name3</div>
+                        <small class="desig">Tokyo</small>
+                        <div class="share">
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                        </div>
+                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Esse, vitae? Adipisci possimus ullam esse exercitationem dignissimos aspernatur quo maiores assumenda molestias. Neque reiciendis iusto natus. Quis quia est incidunt enim!</p>
+                    </div>
+				</div>  
+				<div class="test-body">
+                    <div class="item">
+                        <img src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png">
+                        <div class="name">Name1</div>
+                        <small class="desig">Bangalore</small>
+                        <div class="share">
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star-o" aria-hidden="true"></i>
+                        </div>
+                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Esse, vitae? Adipisci possimus ullam esse exercitationem dignissimos aspernatur quo maiores assumenda molestias. Neque reiciendis iusto natus. Quis quia est incidunt enim!</p>
+                    </div>
+                    <div class="item">
+                        <img src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png">
+                        <div class="name">Name2</div>
+                        <small class="desig">London</small>
+                        <div class="share">
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                        </div>
+                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Esse, vitae? Adipisci possimus ullam esse exercitationem dignissimos aspernatur quo maiores assumenda molestias. Neque reiciendis iusto natus. Quis quia est incidunt enim!</p>
+                    </div>
+                    <div class="item">
+                        <img src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png">
+                        <div class="name">Name3</div>
+                        <small class="desig">Tokyo</small>
+                        <div class="share">
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                        </div>
+                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Esse, vitae? Adipisci possimus ullam esse exercitationem dignissimos aspernatur quo maiores assumenda molestias. Neque reiciendis iusto natus. Quis quia est incidunt enim!</p>
+                    </div>
+                </div>  
+            </div>
+        </section>
 
-			var ORIGIN= new THREE.Vector3();
-			var DIR= new THREE.Vector3();
-			var ZERO= new THREE.Vector3(0,0,0);
+    </main>
 
-			var mouse = new THREE.Vector2(), INTERSECTED;
-			var radius = 100, theta = 0;
-			function orbitalcontrols() {
-				// Setup orbital controls
-				controls = new OrbitControls(camera, renderer.domElement);
-				controls.enableKeys = false;
-				controls.enablePan = false;
-				controls.enableZoom = true;
-				controls.enableDamping = true;
-				controls.dampingFactor = 0.05;
-				controls.enableRotate = true;
-				controls.autoRotate = true;
-				controls.autoRotateSpeed =1;
-				controls.screenSpacePanning = true;
-				controls.minDistance = 200;
-				// controls.maxDistance = 500;
-				if(document.documentElement.clientWidth>768)  
-					camera.position.z = 250;
-				else
-					camera.position.z = 300;
-			}
-			init();
-			animate();
+   
 
-			function init() {
+    <footer>
+        <div class="newsletter-section">
+            <div class="handpicked"></div>
+            <div class="newsletter">
+                <h6>Join The Club</h6>
+                <p>Sign up to our newsletter to receive product updates, exclusive offers and lucky draws.</p>
+                <form action="POST">
+                    <input type="text" placeholder="Name" id="name" required>    
+                    <input type="email" placeholder="Email" id="email" required><br>
+                    <button type="submit" name="newsletter-sumbit">Count Me In</button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="innerfooter">
+            <div class="moto">
+                <a href="index.html" class="logo"><img src="./assets/images/surf.svg" alt=""></a>
+                <p>Destinations made simple.</p>
+                <ul class="social">
+                    <li><a href="#"></a></li>
+                    <li><a href="#"></a></li>
+                    <li><a href="#"></a></li>
+                </ul>
+            </div>
+            <div class="footerlinks">
+                <ul>
+                    <h6>SITE</h6>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="reviews.html">Reviews</a></li>
+                    <li><a href="featured.html">Featured</a></li>
+                </ul>
+                
+                <ul>
+                    <h6>INFO</h6>
+                    <li><a href="privacy.html">Privacy</a></li>
+                    <li><a href="terms.html">Terms</a></li>
+                    <li><a href="bugreport.html">Bug Reports</a></li>
+                    <li><a href="join.html">Join Us</a></li>
+                </ul>
+            </div>
+    
+        </div>
 
-				container = document.createElement( 'div' );
-				document.body.appendChild( container );
+        <div class="copy"><br>
+            <p>&#169; 2020 Surf, Inc. All rights reserved.</p>
+        </div>
+    </footer>
 
-				camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 1, 10000 );
-				camera.position.z = radius;
+    <!-- **************** SCRIPTS ***************** -->
+    <script src="./js/menu.js"></script>
+    <!-- <script src="/js/3dmodel.js" type="module"></script> -->
+    <script>
+        const body = document.querySelector('body');
+        const loadingScreen = document.querySelector('.loading-screen');
+        loadingScreen.classList.toggle('complete');
+        setTimeout(function(){ body.classList.add('complete'); }, 2000);
+        setTimeout(function(){ loadingScreen.classList.add('hide'); }, 2000);
+    </script>
+</body>
 
-				scene = new THREE.Scene();
-				scene.background = new THREE.Color( 0xf0f0f0 );
-
-				var light = new THREE.DirectionalLight( 0xffffff, 1 );
-				light.position.set( 1, 1, 1 ).normalize();
-				scene.add( light );
-
-				var geometry = new THREE.BoxBufferGeometry( 20, 20, 20 );
-				let Places={
-					"Australia": [-25.27,133.77],
-					"India": [20.6,79],
-					"UK": [55.57,-3.43]};
-					
-				var placeGeometry = new THREE.CircleBufferGeometry( 10, 10 );
-				
-				// for (const key in Places) {
-				// 	if (Places.hasOwnProperty(key)) {
-				// 		var placeMaterial=new THREE.MeshPhongMaterial( {
-				// 			color: 0xffff00,
-				// 			side: THREE.BackSide, 
-				// 		});
-				// 		var placeObject = new THREE.Mesh( placeGeometry, new THREE.MeshLambertMaterial( { color: Math.random() * 0xffffff } ) );
-				// 		const Place = Places[key];
-
-				// 		var latitude=Place[0],longitude=Place[1];
-				// 		var phi = Math.PI/2-THREE.MathUtils.degToRad(latitude);
-				// 		var theta =THREE.MathUtils.degToRad(-longitude)+0;
-				
-				// 		placeObject.name=key;
-				// 		placeObject.position.x = 101 * Math.sin(phi) * Math.cos(theta);
-				// 		placeObject.position.y = 101 * Math.cos(phi);
-				// 		placeObject.position.z = 101 * Math.sin(phi) * Math.sin(theta);
-				// 		placeObject.lookAt(0,0,0);
-				// 		// placeObject.rotation.x = -theta ;
-				// 		// placeObject.rotation.y = -phi;
-				// 		// placeObject.rotation.z = Math.PI/2;
-				// 		scene.add( placeObject );
-												
-						
-				// 	}
-				// }
-				for ( var i = 0; i < 2000; i ++ ) {
-
-					var object = new THREE.Mesh( geometry, new THREE.MeshLambertMaterial( { color: Math.random() * 0xffffff } ) );
-
-					object.position.x = Math.random() * 800 - 400;
-					object.position.y = Math.random() * 800 - 400;
-					object.position.z = Math.random() * 800 - 400;
-
-					object.rotation.x = Math.random() * 2 * Math.PI;
-					object.rotation.y = Math.random() * 2 * Math.PI;
-					object.rotation.z = Math.random() * 2 * Math.PI;
-
-					object.scale.x = Math.random() + 0.5;
-					object.scale.y = Math.random() + 0.5;
-					object.scale.z = Math.random() + 0.5;
-
-					scene.add( object );
-
-				}
-
-				raycaster = new THREE.Raycaster();
-
-				renderer = new THREE.WebGLRenderer({antialias: true});
-				renderer.setPixelRatio( window.devicePixelRatio );
-				renderer.setSize( window.innerWidth, window.innerHeight );
-				container.appendChild( renderer.domElement );
-				orbitalcontrols();
-
-				stats = new Stats();
-				container.appendChild( stats.dom );
-
-				// document.addEventListener( 'click', onDocumentMouseMove, false );
-				document.addEventListener( 'touchend', onDocumentMouseMove, false );
-
-				//
-
-				window.addEventListener( 'resize', onWindowResize, false );
-
-			}
-
-			function onWindowResize() {
-
-				camera.aspect = window.innerWidth / window.innerHeight;
-				camera.updateProjectionMatrix();
-
-				renderer.setSize( window.innerWidth, window.innerHeight );
-
-			}
-
-			function onDocumentMouseMove( event ) {
-
-				event.preventDefault();
-				// ORIGIN=camera.position;
-				// DIR.subVectors( ORIGIN, ZERO ).normalize();
-				// mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
-				// mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
-				var touches = event.changedTouches;
-				mouse.x = ( touches[0].pageX / window.innerWidth ) * 2 - 1;
-				mouse.y = - ( touches[0].pageY / window.innerHeight ) * 2 + 1;
-				// window.alert(mouse.x+" "+mouse.y)
-
-			}
-
-			//
-
-			function animate() {
-
-				requestAnimationFrame( animate );
-				controls.update();// only required if controls.enableDamping = true, or if controls.autoRotate = true
-
-				render();
-				stats.update();
-
-			}
-			function ray() {
-				// theta += 0.1;
-
-				// camera.position.x = radius*2 * Math.sin( THREE.MathUtils.degToRad( theta ) );
-				// camera.position.y = radius*2 * Math.sin( THREE.MathUtils.degToRad( theta ) );
-				// camera.position.z = radius*2 * Math.cos( THREE.MathUtils.degToRad( theta ) );
-				// camera.lookAt( scene.position );
-
-				// camera.updateMatrixWorld();
-
-				// find intersections
-				// raycaster.set( ORIGIN, DIR );
-				raycaster.setFromCamera( mouse, camera );
-
-				var intersects = raycaster.intersectObjects( scene.children );
-
-				if ( intersects.length > 0 ) {
-
-					if ( INTERSECTED != intersects[ 0 ].object ) {
-
-						if ( INTERSECTED ) INTERSECTED.material.emissive.setHex( INTERSECTED.currentHex );
-
-						INTERSECTED = intersects[ 0 ].object;
-						INTERSECTED.currentHex = INTERSECTED.material.emissive.getHex();
-						INTERSECTED.material.emissive.setHex( 0xff0000 );
-
-					}
-
-				} else {
-
-					if ( INTERSECTED ) INTERSECTED.material.emissive.setHex( INTERSECTED.currentHex );
-
-					INTERSECTED = null;
-
-				}
-
-			}
-			function render() {
-
-				ray();
-				renderer.render( scene, camera );
-				// console.log(camera.position)
-			}
-
-		</script>
-
-	</body>
 </html>

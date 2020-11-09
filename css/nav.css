@@ -164,7 +164,7 @@ footer{
     /* background: rgba(22, 22, 22, 0.39); */
     background: rgb(22, 22, 22) url(".././assets/images/black.svg") no-repeat center;
     background-size: cover;
-    z-index: 1;
+    z-index: 0;
     color: white;
 }
 
