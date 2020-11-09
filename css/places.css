@@ -140,9 +140,4 @@ p {
   .blog-item {
     grid-column: auto;
   }
-
-  .site-header {
-    padding-left: 15px;
-    padding-right: 15px;
-  }
 }
