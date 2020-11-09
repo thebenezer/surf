@@ -180,6 +180,8 @@ main {
     background-color: rgb(157, 116, 174);
     border-radius: 50%;
     display: none;
+    /*To remove on tap blue color*/
+    -webkit-tap-highlight-color: transparent;
 }
 .more{
     z-index: 1;
