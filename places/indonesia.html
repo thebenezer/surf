@@ -39,18 +39,80 @@
             <ul class="navlinks">
                 <li><a href="#">Explore</a></li>
                 <li><a href="#">Feed</a></li>
-                <li class="mobile-signup"><a href="#">Sign-up</a></li>
-                <li><a href="#">Login</a></li>
+                <li class="mobile-signup"><a onclick="openSignupForm()">Sign-up</a></li>
+                <li><a href="#" onclick="openLoginForm()">Login</a></li>
                 <!-- <li class="cta"><a href="#">Signup</a></li> -->
             </ul>
-            <a class="cta" href="#">Signup</a>
+            <a class="cta" onclick="openSignupForm()">Signup</a>
             <div class="hamburger">
                 <span class="line1"></span>
                 <span class="line2"></span>
                 <span class="line3"></span>
             </div>
-        </nav>
+         </nav>
     </header>
+
+    <!-- ****************** LOGIN FORM ******************* -->
+    
+    <div class="loginwindow">
+        <form action="#" class="ls-form">
+            <div class="close-form" onclick="closeForm()">
+                <span class="close-l1"></span>
+                <span class="close-l2"></span>
+            </div>
+            <h1>Login</h1>
+           
+    
+            <label class="ls-label">
+                <input type="email" required />
+                <div class="ls-label-text">E-mail</div>
+            </label>
+            <label class="ls-label">
+                <input type="password" required />
+                <div class="ls-label-text">Password</div>
+            </label>
+    
+            <button type="submit" class="btn">Login</button>
+            <p>New to SURF?</p>
+            <div type="button" class="secondbtn" onclick="openSignupForm()">Sign-up</div>
+        </form>
+        </div>
+    </div>
+
+    <!-- ****************** SIGNUP FORM ******************* -->
+
+    <div class="signupwindow">
+        <form action="#" class="ls-form">
+            <div class="close-form" onclick="closeForm()">
+                <span class="close-l1"></span>
+                <span class="close-l2"></span>
+            </div>
+            <h1>Signup</h1>
+           
+    
+            <label class="ls-label">
+                <input type="text" required />
+                <div class="ls-label-text">Username</div>
+            </label>
+            <label class="ls-label">
+                <input type="email" required />
+                <div class="ls-label-text">E-mail</div>
+            </label>
+            <label class="ls-label">
+                <input type="password" required />
+                <div class="ls-label-text">Password</div>
+            </label>
+            <label class="ls-label">
+                <input type="password" required />
+                <div class="ls-label-text">Confirm Password</div>
+            </label>
+
+            <button type="button" class="btn" >Sign-up</button>    
+            <p>Have an account already?</p>
+            <div type="submit" class="secondbtn" onclick="openLoginForm()">Login</div>
+        </form>
+        </div>
+    </div>
 
     <!-- ################ CONTENT ################## -->
     <!-- Write your code inside main. You may use your own tags inside.
