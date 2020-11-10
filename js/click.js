@@ -16,7 +16,8 @@ function loadingcomplete(){
     const body = document.querySelector('body');
     const loadingScreen = document.querySelector('.loading-screen');
     // loadingScreen.classList.toggle('complete');
-    setTimeout(function(){ body.classList.add('complete'); }, 2000);
+    // setTimeout(function(){ body.classList.add('complete'); }, 2000);
+    body.classList.add('complete');
     setTimeout(function(){ loadingScreen.classList.add('hide'); }, 2000);    
 }
 function onDocumentMouseMove( event ) {
@@ -126,6 +127,8 @@ function main(){
             "India": [20.6,79],
             "UK": [55.57,-3.43],
             "Spain": [40.46,-3.75],
+            "Italy": [41.87, 12.56],
+            "Japan": [36.20, 138.25],
             "USA": [37.09, -95.71],
             "Mexico":[23.6345, -102.55],
             "France":[46.22, 2.21],
@@ -191,8 +194,11 @@ function main(){
        
         // move the elem to that position
         pop_info.style.transform = `translate(-50%, -50%) translate(${x}px,${y}px)`;
+        var addr = "./places/"+obj.name.toLowerCase()+".html";
+        pop_info.setAttribute('href',addr);
+        pop_info.innerText = obj.name;
         pop_info.style.display = 'block';
-        pop_info.innerHTML=obj.name;
+        // pop_info.innerHTML=aTag;
     }
     function ray() {
         
