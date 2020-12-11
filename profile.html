@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Surf</title>
+    <link rel="icon" type="image/svg" href="favicon.svg">
+    <link rel="apple-touch-icon" sizes="180x180" href="static/images/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="static/images/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="static/images/favicons/favicon-16x16.png">
+    <link href="https://fonts.googleapis.com/css2?family=Prata&display=swap" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500&display=swap" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/content.css">
+    <link rel="stylesheet" href="./css/nav.css">
+</head>
+
+<body>
+    <div class="loading-screen">
+        <h1 class="load-logo">SURF</h1>
+        <p class="tagline">Destinations made simple</p>
+        <img  class="boat" src="./assets/images/sailboat.svg" alt="">
+        <p class="loading">Loading...</p>
+    </div>
+    <header>
+        <div class="scroll">
+
+        </div>
+        <nav>
+            <div class="logo">
+                <a href="index.html" ><img src="./assets/images/surf.svg" alt="" /></a>
+            </div>
+                <ul class="navlinks">
+                <li><a href="#">Explore</a></li>
+                <li><a href="#">Feed</a></li>
+                <li class="mobile-signup"><a onclick="openSignupForm()">Sign-up</a></li>
+                <li><a href="#" onclick="openLoginForm()">Login</a></li>
+                <!-- <li class="cta"><a href="#">Signup</a></li> -->
+            </ul>
+            <a class="cta" onclick="openSignupForm()">Signup</a>
+            <div class="hamburger">
+                <span class="line1"></span>
+                <span class="line2"></span>
+                <span class="line3"></span>
+            </div>
+         </nav>
+    </header>
+
+    <!-- ****************** LOGIN FORM ******************* -->
+    
+    <div class="loginwindow">
+        <form action="#" class="ls-form">
+            <div class="close-form" onclick="closeForm()">
+                <span class="close-l1"></span>
+                <span class="close-l2"></span>
+            </div>
+            <h1>Login</h1>
+           
+    
+            <label class="ls-label">
+                <input type="email" required />
+                <div class="ls-label-text">E-mail</div>
+            </label>
+            <label class="ls-label">
+                <input type="password" required />
+                <div class="ls-label-text">Password</div>
+            </label>
+    
+            <button type="submit" class="btn">Login</button>
+            <p>New to SURF?</p>
+            <div type="button" class="secondbtn" onclick="openSignupForm()">Sign-up</div>
+        </form>
+        </div>
+    </div>
+
+    <!-- ****************** SIGNUP FORM ******************* -->
+
+    <div class="signupwindow">
+        <form action="#" class="ls-form">
+            <div class="close-form" onclick="closeForm()">
+                <span class="close-l1"></span>
+                <span class="close-l2"></span>
+            </div>
+            <h1>Signup</h1>
+           
+    
+            <label class="ls-label">
+                <input type="text" required />
+                <div class="ls-label-text">Username</div>
+            </label>
+            <label class="ls-label">
+                <input type="email" required />
+                <div class="ls-label-text">E-mail</div>
+            </label>
+            <label class="ls-label">
+                <input type="password" required />
+                <div class="ls-label-text">Password</div>
+            </label>
+            <label class="ls-label">
+                <input type="password" required />
+                <div class="ls-label-text">Confirm Password</div>
+            </label>
+
+            <button type="button" class="btn" >Sign-up</button>    
+            <p>Have an account already?</p>
+            <div type="submit" class="secondbtn" onclick="openLoginForm()">Login</div>
+        </form>
+        </div>
+    </div>
+    <!-- ****************** ALL CONTENT HERE ******************* -->
+
+    <main>
+        <section class="container">
+            <article class="profile">
+                <div class="card">
+                    <!-- <img class="profile_pic" src="https://m.media-amazon.com/images/S/aplus-media/vc/cab6b08a-dd8f-4534-b845-e33489e91240._CR75,0,300,300_PT0_SX300__.jpg" alt=""> -->
+                    <div class="profile_pic" style="background-image: url('https://m.media-amazon.com/images/S/aplus-media/vc/cab6b08a-dd8f-4534-b845-e33489e91240._CR75,0,300,300_PT0_SX300__.jpg');"></div>
+                    <div class="globe_link"></div>
+                    <div class="card_info">
+                        <div class="uid">djohson</div>
+                        <h2 class="name">Dwyane Johnson</h2>
+                        <div class="desc">Traveller and explorer of the world</div>
+                        <div class="actions">
+                            <button><img src="./assets/images/edit.svg" alt=""></button>
+                            <!-- <button><img src="./assets/images/friends.svg" alt=""></button> -->
+                            <!-- <button><img src="./assets/images/paper-plane.svg" alt=""></button> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="badge-card">
+                    <div class="badge" >
+                        <img class="badge_pic" src="./assets/images/badge.jpg" alt="">
+                        <canvas class="badge_pic" id="c"></canvs>
+                    </div>
+                    <!-- <div class="globe_link"></div> -->
+                    <div class="card_info">
+                        <h2 class="name"></h2>
+                        <div class="desc">
+                            <p><b>Places Travelled :</b> 12</p>
+                            <p><b>Badges Earned&nbsp;&nbsp;:</b> 12</p>
+                        </div>
+                        <div class="actions">
+                            <button><img src="./assets/images/paper-plane.svg" alt=""></button>
+                        </div>
+                    </div>
+                </div>
+            </article>
+            <div class="flipbox">
+                <h3 class="fliptext">Memories</h3>
+                <input type="checkbox" class="flip_list" id="flip">
+                <h3 class="fliptext">Wishlist</h3>
+                <h2 class="mobile_fliptext"></h2>
+            </div>
+        </section>
+    </main>
+   
+
+    <footer>
+        <div class="newsletter-section">
+            <div class="handpicked"></div>
+            <div class="newsletter">
+                <h6>Join The Club</h6>
+                <p>Sign up to our newsletter to receive product updates, exclusive offers and lucky draws.</p>
+                <form action="POST">
+                    <input type="text" placeholder="Name" id="name" required>    
+                    <input type="email" placeholder="Email" id="email" required><br>
+                    <button type="submit" name="newsletter-sumbit">Count Me In</button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="innerfooter">
+            <div class="moto">
+                <a href="index.html" class="logo"><img src="./assets/images/surf.svg" alt=""></a>
+                <p>Destinations made simple.</p>
+                <ul class="social">
+                    <li><a href="#"></a></li>
+                    <li><a href="#"></a></li>
+                    <li><a href="#"></a></li>
+                </ul>
+            </div>
+            <div class="footerlinks">
+                <ul>
+                    <h6>SITE</h6>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="reviews.html">Reviews</a></li>
+                    <li><a href="featured.html">Featured</a></li>
+                </ul>
+                
+                <ul>
+                    <h6>INFO</h6>
+                    <li><a href="privacy.html">Privacy</a></li>
+                    <li><a href="terms.html">Terms</a></li>
+                    <li><a href="bugreport.html">Bug Reports</a></li>
+                    <li><a href="join.html">Join Us</a></li>
+                </ul>
+            </div>
+    
+        </div>
+
+        <div class="copy"><br>
+            <p>&#169; 2020 Surf, Inc. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- **************** SCRIPTS ***************** -->
+    <script src="./js/menu.js"></script>
+
+    <!-- **************** SCRIPTS ***************** -->
+    <script src="./js/profile_earth.js" type="module"></script> 
+    </body>
+</html>
