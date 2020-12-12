@@ -5,6 +5,9 @@
     text-decoration: none;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
+    outline: none;
+    /*To remove on tap blue color*/
+    -webkit-tap-highlight-color: transparent;
 }
 
 body{
