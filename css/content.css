@@ -16,6 +16,7 @@
     z-index: 2;
     width: 80%;
     margin: 0 auto;
+    text-align: center;
 }
 .article-content{
     z-index: 1;
@@ -103,10 +104,210 @@
 .about img{
     width: 100%;
 }
+.profile{
+    margin-top: 80px;
+    display: flex;
+    justify-content: space-between;
+}
+/* .profile #c{
+    width: 100%;
+    height: 100%;
+} */
+.details{
+    flex: 1;
+    padding: 1rem;
+}
+
+
+
+
+/* CARD DESIGN */
+
+.card,.badge-card {
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0px 10px 40px rgba(34, 35, 58, 0.5);
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    border-radius: 25px;
+    position: relative;
+    width: 100%;
+    min-height: 300px;
+    margin: 40px;
+}
+
+.profile_pic {
+    flex: 1;
+    /* width: 100%; */
+    /* height: 100%; */
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    /* background-position: bottom center; */
+    background-size: cover;
+}
+    
+.globe_link {
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    border-radius: 50%;
+    border: 6px solid white;
+    background-image: linear-gradient(-60deg, #16a085 0%, #f4d03f 100%);
+    top: 15px;
+    right: 40%;
+}
+
+.card_info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    text-align: left;
+    /* grid-template-columns: 1fr 2fr; */
+}
+
+.uid {
+    padding: 1rem;
+    text-align: right;
+    color: green;
+    font-weight: bold;
+    font-size: 16px;
+}
+.name{
+    color: black;
+    padding: 0.5rem 1rem 0 1rem;
+    text-align: left;
+    margin-top: 10px;
+}
+.desc {
+    padding: 0 1rem;
+    font-size: 12px;
+    /* margin: 0; */
+}
+   
+.actions {
+    /* text-align: left; */
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 20px;
+}
+.actions button img {
+    margin: 0 20px;
+    width: 30px;
+    border: none;
+}
+
+.actions button {
+    border: none;
+    background: none;
+    font-size: 24px;
+    color: #8bc34a;
+    cursor: pointer;
+    transition:.5s;
+
+}
+.actions button:hover{
+color: #4CAF50  ;
+transform: rotate(22deg)
+}
+/* BADGE CARD */
+.badge-card{
+    flex-direction: column;
+}
+.badge{
+    padding-top: 10px;
+    /* background-color: cadetblue; */
+    display: flex;
+    justify-content: space-evenly;
+}
+.badge_pic{
+    margin: auto;
+    width: 140px;
+    height: 180px;
+    border-radius: 25px;
+}
+.badge-card .desc{
+    border-radius: 25px;
+}
+
+/* FLIP VISITED VS BUCKETLIST */
+.flipbox{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.mobile_fliplist{
+    display: none;
+}
+.flip_list {
+    -webkit-appearance: none;
+    position: relative;
+    width: 200px;
+    height: 100px;
+    background-image: url(../assets/images/day_a.png);
+    background-size: cover;
+    border-radius: 50px;
+    outline: none;
+    transition: background-image .90s;
+    box-shadow: 0px 2px 5px 1px gray;
+    margin: 40px;
+}
+  
+.flip_list:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100px;
+    width: 100px;
+    border-radius: 50px;
+    transition: all .9s;
+    background-color: #85e9c3;
+}
+  
+.flip_list:checked {
+    background-image: url(../assets/images/night_a.png);
+    transition: background-image .90s;  
+}
+.flip_list:checked:before {
+    transform: translate(100%);
+    transition: all .9s;
+    background-color: #ECF0F3;
+}
+
 @media screen and (max-width:768px){
     .about{
         flex-direction: column-reverse;
     }
+    .profile{
+        flex-direction: column;
+        margin: 0;
+        margin-top: 100px;
+    }
+    .card,.badge-card{
+        margin: 20px 0;
+    }
+    .flipbox{
+        flex-direction: column;
+    }
+    .flip_list{
+        margin: 20px 0 10px 0;
+    }
+
+    .fliptext{
+        display: none;
+    }
+    .mobile_fliptext{
+        display: block;
+    }
+    .mobile_fliptext::after {
+        content: "Memories";
+    } 
+    .flip_list:checked ~ .mobile_fliptext::after {
+        content: "Bucket List";
+    }  
     .about div{
         margin: auto;
         font-size: 16px;
