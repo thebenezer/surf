@@ -1,36 +1,55 @@
-// The debounce function receives our function as a parameter
-const debounce = (fn) => {
+//..........SCROLL BUTTONS..........
 
-    // This holds the requestAnimationFrame reference, so we can cancel it if we wish
-    let frame;
+// const more= document.querySelector('.more');
+const scrollToTop= document.querySelector('.scroll-to-top');
+
+window.addEventListener("scroll", scrollFunction);
+
+function scrollFunction() {
+ 
+    // if (window.pageYOffset > 40) { // Show scrollToTop
+    //     logo.classList.add('small');
+    //     nav.classList.add('small');
+    //     more.classList.add('fade');
+    //   }
+    // else { // Hide scrollToTop
+    //   nav.classList.remove('small');
+    //   logo.classList.remove('small');
+    //   more.classList.remove('fade');
+    // }
+    if (window.pageYOffset > 300) { // Show scrollToTop
+        scrollToTop.classList.add('fade');
+        // scrollToTop.style.display = "block";
+    }
+    else { // Hide scrollToTop
+        scrollToTop.classList.remove('fade');
+        // scrollToTop.style.display = "none";
+    }
+}
+
+scrollToTop.addEventListener("click", smoothScrollBackToTop);
+
+
+function smoothScrollBackToTop() {
+  const targetPosition = 0;
+  const startPosition = window.pageYOffset;
+  const distance = targetPosition - startPosition;
+  const duration = 750;
+  let start = null;
   
-    // The debounce function returns a new function that can receive a variable number of arguments
-    return (...params) => {
-      
-      // If the frame variable has been defined, clear it now, and queue for next frame
-      if (frame) { 
-        cancelAnimationFrame(frame);
-      }
-  
-      // Queue our function call for the next frame
-      frame = requestAnimationFrame(() => {
-        
-        // Call our function and pass any params we received
-        fn(...params);
-      });
-  
-    } 
-  };
-  
-  
-  // Reads out the scroll position and stores it in the data attribute
-  // so we can use it in our stylesheets
-  const storeScroll = () => {
-    document.documentElement.dataset.scroll = window.scrollY;
+  window.requestAnimationFrame(step);
+
+  function step(timestamp) {
+    if (!start) start = timestamp;
+    const progress = timestamp - start;
+    window.scrollTo(0, easeInOutCubic(progress, startPosition, distance, duration));
+    if (progress < duration) window.requestAnimationFrame(step);
   }
-  
-  // Listen for new scroll events, here we debounce our `storeScroll` function
-  document.addEventListener('scroll', debounce(storeScroll), { passive: true });
-  
-  // Update scroll position for first time
-  storeScroll();
+}
+
+function easeInOutCubic(t, b, c, d) {
+	t /= d/2;
+	if (t < 1) return c/2*t*t*t + b;
+	t -= 2;
+	return c/2*(t*t*t + 2) + b;
+};
