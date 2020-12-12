@@ -1,3 +1,47 @@
+/* ############ SCROLL TO TOP########### */
+
+
+.scroll-to-top{
+    background-color: rgba(253, 253, 253, 0.781);
+    width: 51px;
+    height: 30px;
+    border-radius: 25px;
+    cursor: pointer;
+    position: fixed;
+    right: 3%;
+    bottom: 3%;
+    border: solid #242423 2px;
+    text-align: center;
+    font-size: 12px;
+    /* display: none; */
+    z-index: 0;
+    opacity: 0;
+    transition: all 0.5s ease;
+    /*To disable text selection on tap or double click*/
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer */
+    -khtml-user-select: none; /* KHTML browsers (e.g. Konqueror) */
+    -webkit-user-select: none; /* Chrome, Safari, and Opera */
+    -webkit-touch-callout: none; /* Disable Android and iOS callouts*/
+}
+
+.scroll-to-top img{
+    margin: 3px;
+    width: auto;
+    animation: upup 1s infinite alternate;
+}
+.scroll-to-top.fade{
+    opacity: 1;
+    z-index: 2;
+}
+@keyframes upup{
+    0%{
+        transform: translateY(0px);
+    }
+    100%{
+        transform: translateY(7px);
+    }
+}
 /* *************LOGIN SIGNUP FORM STYLING************** */
 
 .loginwindow,.signupwindow{
@@ -172,22 +216,6 @@ nav{
     display: none;
 }
 
-/* ON SCROLL MAKE HEADER DARKER */
-html:not([data-scroll='0']) nav {
-        position: fixed;
-        top: 0;
-        background-color:rgba(14, 14, 14, 0.933);
-        color: white; 
-        box-shadow: 0 0 .5em rgba(16, 15, 15, 0.905);
-}
-html:not([data-scroll='0']) nav .logo{
-    filter: invert(1);
-}
-html:not([data-scroll='0']) nav .hamburger{
-    filter: invert(1);
-}
-  
-
 @media screen and (max-width:1024px){
     .navlinks li{
         margin: auto 0 auto 50px;  
@@ -198,6 +226,18 @@ html:not([data-scroll='0']) nav .hamburger{
 }
 
 @media screen and (max-width:768px){
+    .scroll-to-top{
+        width: 51px;
+        height: 40px;
+        cursor: pointer;
+        right: 3%;
+        bottom: 3%;
+        border: solid #242423 2px;
+        margin-bottom: 10px;
+        font-size: 10px;
+        transition: all 0.5s ease;
+        -webkit-tap-highlight-color: transparent;
+    }
     
     .logo{
         z-index: 1;
