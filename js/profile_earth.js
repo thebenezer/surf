@@ -28,6 +28,7 @@ function orbitalcontrols() {
     controls = new OrbitControls(camera, renderer.domElement);
     controls.autoRotate = true;
     controls.autoRotateSpeed =1;
+    controls.enabled=false;
 }
 
 function main(){
