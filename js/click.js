@@ -8,7 +8,7 @@ const canvas=document.querySelector('#c');
 const pop_info=document.querySelector('#pop-info');
 
 let renderer,camera,scene,controls,raycaster;
-let mouse = new THREE.Vector2(), INTERSECTED;
+let mouse = new THREE.Vector2(), INTERSECTED,Places;
 
 
 
@@ -64,7 +64,7 @@ function orbitalcontrols() {
     controls.autoRotateSpeed =1;
     // controls.screenSpacePanning = true;
     controls.minDistance = 200;
-    // controls.maxDistance = 500;
+    controls.maxDistance = 350;
     if(document.documentElement.clientWidth>768)  
         camera.position.z = 250;
     else
@@ -122,24 +122,24 @@ function main(){
         }
         addEarth();
        
-        let Places={
-            "Australia": [-25.27,133.77],
-            "India": [20.6,79],
-            "UK": [55.57,-3.43],
-            "Spain": [40.46,-3.75],
-            "Italy": [41.87, 12.56],
-            "Japan": [36.20, 138.25],
-            "USA": [37.09, -95.71],
-            "Mexico":[23.6345, -102.55],
-            "France":[46.22, 2.21],
-            "Turkey":[38.96, 35.24],
-            "Thailand":[15.87, 101],
-            "China":[35.86, 104.19],
-            "Germany":[51.16, 10.45],
-            "South Africa":[-30.56, 22.93],
-            "Brazil":[-14.23, -51.92],
-            "New Zeland": [-40.90, 174.88],
-            "Indonesia": [-0.79,113.92]};
+        Places={
+            "Australia": [-25.27,133.77,"australia_small.jpg"],
+            "India": [20.6,79,"india_small.jpg"],
+            "UK": [55.57,-3.43,"uk_small.jpg"],
+            "Spain": [40.46,-3.75,"spain_small.jpg"],
+            "Italy": [41.87, 12.56,"italy_small.jpg"],
+            "Japan": [36.20, 138.25,"japan_small.jpg"],
+            "USA": [37.09, -95.71,"usa_small.jpg"],
+            "Mexico":[23.6345, -102.55,"mexico_small.jpg"],
+            "France":[46.22, 2.21,"france_small.jpg"],
+            "Turkey":[38.96, 35.24,"turkey_small.jpg"],
+            "Thailand":[15.87, 101,"thailand_small.jpg"],
+            "China":[35.86, 104.19,"china_small.jpg"],
+            "Germany":[51.16, 10.45,"germany_small.jpg"],
+            "South Africa":[-30.56, 22.93,"sa_small.jpg"],
+            "Brazil":[-14.23, -51.92,"brazil_small.jpg"],
+            "New Zeland": [-40.90, 174.88,"newzeland_small.jpg"],
+            "Indonesia": [-0.79,113.92,"indonesia_small.jpg"]};
             
         var placeGeometry = new THREE.CircleBufferGeometry( 2.5, 6 );
         
@@ -194,10 +194,13 @@ function main(){
        
         // move the elem to that position
         pop_info.style.transform = `translate(-50%, -50%) translate(${x}px,${y}px)`;
-        var addr = "./places/"+obj.name.toLowerCase()+".html";
+        // var addr = "./places/"+obj.name.toLowerCase()+".php";
+        var addr = "./place.php?country="+Places[obj.name][3];
         pop_info.setAttribute('href',addr);
         pop_info.innerText = obj.name;
         pop_info.style.display = 'block';
+        // console.log(Places[obj.name][2]);
+        pop_info.style.backgroundImage = "url(./assets/placeimages/"+Places[obj.name][2]+")";
         // pop_info.innerHTML=aTag;
     }
     function ray() {

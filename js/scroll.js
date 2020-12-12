@@ -1,22 +1,23 @@
 //..........SCROLL BUTTONS..........
 
-// const more= document.querySelector('.more');
+const logo= document.querySelector('.logo img');
+const nav= document.querySelector('nav');
 const scrollToTop= document.querySelector('.scroll-to-top');
 
 window.addEventListener("scroll", scrollFunction);
 
 function scrollFunction() {
  
-    // if (window.pageYOffset > 40) { // Show scrollToTop
-    //     logo.classList.add('small');
-    //     nav.classList.add('small');
-    //     more.classList.add('fade');
-    //   }
-    // else { // Hide scrollToTop
-    //   nav.classList.remove('small');
-    //   logo.classList.remove('small');
-    //   more.classList.remove('fade');
-    // }
+    if (window.pageYOffset > 40) { // Show scrollToTop
+        logo.classList.add('small');
+        nav.classList.add('highlight');
+        // more.classList.add('fade');
+      }
+    else { // Hide scrollToTop
+      logo.classList.remove('small');
+      nav.classList.remove('highlight');
+      // more.classList.remove('fade');
+    }
     if (window.pageYOffset > 300) { // Show scrollToTop
         scrollToTop.classList.add('fade');
         // scrollToTop.style.display = "block";

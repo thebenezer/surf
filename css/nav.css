@@ -3,8 +3,8 @@
 
 .scroll-to-top{
     background-color: rgba(253, 253, 253, 0.781);
-    width: 51px;
-    height: 30px;
+    width: 55px;
+    height: 40px;
     border-radius: 25px;
     cursor: pointer;
     position: fixed;
@@ -14,7 +14,7 @@
     text-align: center;
     font-size: 12px;
     /* display: none; */
-    z-index: 0;
+    /* z-index: -1; */
     opacity: 0;
     transition: all 0.5s ease;
     /*To disable text selection on tap or double click*/
@@ -26,13 +26,14 @@
 }
 
 .scroll-to-top img{
-    margin: 3px;
+    margin: 2px;
     width: auto;
     animation: upup 1s infinite alternate;
 }
 .scroll-to-top.fade{
     opacity: 1;
     z-index: 2;
+    /* transition: all 0.5s ease; */
 }
 @keyframes upup{
     0%{
@@ -181,12 +182,20 @@ nav{
     color: black;
     transition: all 1s ease;
 }
+nav.highlight{
+    /* padding: 5px 10%; */
+    /* padding-top: 5px; */
+    background-color: rgba(255, 255, 255, 0.898);
+}
 .logo{
     flex: 1;
-    /* background: cadetblue; */
 }
 .logo img{
     height: 60px;
+    transition: all 1s ease;
+}
+.logo img.small{
+    height: 40px;
 }
 .navlinks{
     flex: 1;
@@ -231,7 +240,7 @@ nav{
         height: 40px;
         cursor: pointer;
         right: 3%;
-        bottom: 3%;
+        bottom: 25px;
         border: solid #242423 2px;
         margin-bottom: 10px;
         font-size: 10px;
