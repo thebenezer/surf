@@ -112,7 +112,6 @@
     opacity: 0.8;
 }
 
-/* Add a red background color to the cancel button */
 .ls-form .secondbtn {
     background-color: #4c9daf;
     /* height: 40px; */
@@ -132,11 +131,11 @@ nav{
     width: 100%;
     z-index: 2;
     justify-content: space-around;
-    /* background-color: rgb(207, 207, 204); */
     padding: 10px 10%;
     font-size: 18px;
     font-weight: 900;
     color: black;
+    transition: all 1s ease;
 }
 .logo{
     flex: 1;
@@ -173,6 +172,21 @@ nav{
     display: none;
 }
 
+/* ON SCROLL MAKE HEADER DARKER */
+html:not([data-scroll='0']) nav {
+        position: fixed;
+        top: 0;
+        background-color:rgba(14, 14, 14, 0.933);
+        color: white; 
+        box-shadow: 0 0 .5em rgba(16, 15, 15, 0.905);
+}
+html:not([data-scroll='0']) nav .logo{
+    filter: invert(1);
+}
+html:not([data-scroll='0']) nav .hamburger{
+    filter: invert(1);
+}
+  
 
 @media screen and (max-width:1024px){
     .navlinks li{
