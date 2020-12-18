@@ -6,9 +6,10 @@ import { OrbitControls } from './three/OrbitControls.js';
 
 const canvas=document.querySelector('#c');
 const pop_info=document.querySelector('#pop-info');
+const form=document.querySelector('.search_bar');
 
 let renderer,camera,scene,controls,raycaster;
-let mouse = new THREE.Vector2(), INTERSECTED,Places;
+let mouse = new THREE.Vector2(), INTERSECTED,Places,allPlaces;
 
 
 
@@ -71,6 +72,78 @@ function orbitalcontrols() {
         camera.position.z = 300;
 }
 
+function drawScene(drawPlaceArray) {
+    // Setup scene
+    scene = new THREE.Scene();
+    // Setup camera
+    camera = new THREE.PerspectiveCamera(60, canvas.clientWidth / canvas.clientHeight, 1, 5000);  
+    // Setup renderer
+    renderer = new THREE.WebGLRenderer({
+    canvas,
+    antialias: true
+    });
+    // container.appendChild( renderer.domElement );
+    orbitalcontrols();
+    // Add fog to the scene
+    scene.fog = new THREE.FogExp2( 0xe8eddf, 0.002 );
+    scene.fog.name="fog";
+    var light = new THREE.DirectionalLight( 0xffffff, 1 );
+    light.position.set( 1, 1, 1 ).normalize();
+    camera.add( light );
+    camera.name="camera";
+    scene.add(camera);
+    scene.name="scene";
+
+    function addEarth() {
+    var spGeo = new THREE.SphereGeometry(100,50,50);
+    var loader=new THREE.TextureLoader();
+    var planetTexture = loader.load( "./assets/additional_scripts/new_world.png" );
+
+
+    [THREE.BackSide, THREE.FrontSide].forEach((side) => {
+        var mat2 =  new THREE.MeshBasicMaterial( {
+            map: planetTexture,
+            alphaTest: 0.7,
+            opacity:1,
+            transparent: true,
+            side,
+            } );
+            var sp = new THREE.Mesh(spGeo,mat2);
+            sp.name="Earth";
+            scene.add(sp);
+        });
+        planetTexture.dispose();
+    }
+    addEarth();   
+
+    var placeGeometry = new THREE.CircleBufferGeometry( 2.5, 6 );
+        
+    for (const key in drawPlaceArray) {
+        if (drawPlaceArray.hasOwnProperty(key)) {
+            var placeMaterial=new THREE.MeshPhongMaterial( {
+                color: 0x000000,
+                side: THREE.BackSide, 
+            });
+            const placeObject = new THREE.Mesh( placeGeometry, placeMaterial);
+            const Place = drawPlaceArray[key];
+
+            var latitude=Place[0],longitude=Place[1];
+            var phi = Math.PI/2-THREE.MathUtils.degToRad(latitude);
+            var theta =THREE.MathUtils.degToRad(-longitude)+0;
+    
+            placeObject.name=key;
+            // placeObject.rotation.y=Math.PI/6;
+            placeObject.position.x = 101 * Math.sin(phi) * Math.cos(theta);
+            placeObject.position.y = 101 * Math.cos(phi);
+            placeObject.position.z = 101 * Math.sin(phi) * Math.sin(theta);
+            placeObject.lookAt(0,0,0);
+            scene.add( placeObject );
+                                    
+            
+        }
+    }
+}
+
 function main(){
     // window
     //     .fetch("./js/points.json")
@@ -81,93 +154,27 @@ function main(){
     init()
 
     function init() {
-        // Setup scene
-        scene = new THREE.Scene();
-        // Setup camera
-        camera = new THREE.PerspectiveCamera(60, canvas.clientWidth / canvas.clientHeight, 1, 5000);  
-        // Setup renderer
-        renderer = new THREE.WebGLRenderer({
-        canvas,
-        antialias: true
-        });
-        // container.appendChild( renderer.domElement );
-        orbitalcontrols();
-        // Add fog to the scene
-        scene.fog = new THREE.FogExp2( 0xe8eddf, 0.002 );
-    
-        var light = new THREE.DirectionalLight( 0xffffff, 1 );
-        light.position.set( 1, 1, 1 ).normalize();
-        camera.add( light );
-        scene.add(camera);
 
-        function addEarth() {
-        var spGeo = new THREE.SphereGeometry(100,50,50);
-        var loader=new THREE.TextureLoader();
-        var planetTexture = loader.load( "./assets/additional_scripts/new_world.png",render );
+        allPlaces=Places={
+            "Australia": [-25.27,133.77,"australia_small.jpg","australia,opera house,great barrier reef,beach"],
+            "India": [20.6,79,"india_small.jpg","india,jungle"],
+            "UK": [55.57,-3.43,"uk_small.jpg","us,united kingdom,castle"],
+            "Spain": [40.46,-3.75,"spain_small.jpg","spain,beach"],
+            "Italy": [41.87, 12.56,"italy_small.jpg","italy"],
+            "Japan": [36.20, 138.25,"japan_small.jpg","japan"],
+            "USA": [37.09, -95.71,"usa_small.jpg","usa"],
+            "Mexico":[23.6345, -102.55,"mexico_small.jpg","mexico"],
+            "France":[46.22, 2.21,"france_small.jpg","france"],
+            "Turkey":[38.96, 35.24,"turkey_small.jpg","turkey"],
+            "Thailand":[15.87, 101,"thailand_small.jpg","thailand"],
+            "China":[35.86, 104.19,"china_small.jpg","china"],
+            "Germany":[51.16, 10.45,"germany_small.jpg","germany"],
+            "South Africa":[-30.56, 22.93,"sa_small.jpg","sa,south africa,"],
+            "Brazil":[-14.23, -51.92,"brazil_small.jpg","brazil"],
+            "New Zeland": [-40.90, 174.88,"newzeland_small.jpg","nz,new zeland"],
+            "Indonesia": [-0.79,113.92,"indonesia_small.jpg","indonesia,bali"]};
 
-
-        [THREE.BackSide, THREE.FrontSide].forEach((side) => {
-            var mat2 =  new THREE.MeshBasicMaterial( {
-                map: planetTexture,
-                alphaTest: 0.7,
-                opacity:1,
-                transparent: true,
-                side,
-                } );
-                var sp = new THREE.Mesh(spGeo,mat2);
-                sp.name="Earth";
-                scene.add(sp);
-            });
-            planetTexture.dispose();
-        }
-        addEarth();
-       
-        Places={
-            "Australia": [-25.27,133.77,"australia_small.jpg"],
-            "India": [20.6,79,"india_small.jpg"],
-            "UK": [55.57,-3.43,"uk_small.jpg"],
-            "Spain": [40.46,-3.75,"spain_small.jpg"],
-            "Italy": [41.87, 12.56,"italy_small.jpg"],
-            "Japan": [36.20, 138.25,"japan_small.jpg"],
-            "USA": [37.09, -95.71,"usa_small.jpg"],
-            "Mexico":[23.6345, -102.55,"mexico_small.jpg"],
-            "France":[46.22, 2.21,"france_small.jpg"],
-            "Turkey":[38.96, 35.24,"turkey_small.jpg"],
-            "Thailand":[15.87, 101,"thailand_small.jpg"],
-            "China":[35.86, 104.19,"china_small.jpg"],
-            "Germany":[51.16, 10.45,"germany_small.jpg"],
-            "South Africa":[-30.56, 22.93,"sa_small.jpg"],
-            "Brazil":[-14.23, -51.92,"brazil_small.jpg"],
-            "New Zeland": [-40.90, 174.88,"newzeland_small.jpg"],
-            "Indonesia": [-0.79,113.92,"indonesia_small.jpg"]};
-            
-        var placeGeometry = new THREE.CircleBufferGeometry( 2.5, 6 );
-        
-        for (const key in Places) {
-            if (Places.hasOwnProperty(key)) {
-                var placeMaterial=new THREE.MeshPhongMaterial( {
-                    color: 0x000000,
-                    side: THREE.BackSide, 
-                });
-                const placeObject = new THREE.Mesh( placeGeometry, placeMaterial);
-                const Place = Places[key];
-
-                var latitude=Place[0],longitude=Place[1];
-                var phi = Math.PI/2-THREE.MathUtils.degToRad(latitude);
-                var theta =THREE.MathUtils.degToRad(-longitude)+0;
-        
-                placeObject.name=key;
-                // placeObject.rotation.y=Math.PI/6;
-                placeObject.position.x = 101 * Math.sin(phi) * Math.cos(theta);
-                placeObject.position.y = 101 * Math.cos(phi);
-                placeObject.position.z = 101 * Math.sin(phi) * Math.sin(theta);
-                placeObject.lookAt(0,0,0);
-                scene.add( placeObject );
-                                        
-                
-            }
-        }
-        
+        drawScene(Places);     
         canvas.addEventListener( 'mousemove', onDocumentMouseMove, false );
         canvas.addEventListener( 'touchstart', onDocumentTouchEnd, false );
         // document.addEventListener( 'touchend', onDocumentTouchEnd, false );
@@ -298,16 +305,66 @@ else{
 }
 
 
+// ****************SEARCH FOR EXPLORE PAGE********************************
 
 
-        // **********HELPERS********
-
-        // let plane = new THREE.Plane( new THREE.Vector3( 1,0,0 ), 0 );
-        // let helper = new THREE.PlaneHelper( plane, 200, 0xffff00 );
-        // scene.add( helper );
-        // plane = new THREE.Plane( new THREE.Vector3( 0,1,0 ), 0 );
-        // helper = new THREE.PlaneHelper( plane, 200, 0x00ff00 );
-        // scene.add( helper );
-        // plane = new THREE.Plane( new THREE.Vector3( 0,0,1 ), 0 );
-        // helper = new THREE.PlaneHelper( plane, 200, 0x00ff00 );
-        // scene.add( helper );
+function clearThree(obj){
+    while(obj.children.length > 0){ 
+        const child=obj.children[0];
+        // if(child && child.name !== undefined && child.name !== "Earth"){
+        console.log(child.name);
+        clearThree(child)
+        obj.remove(child);
+        // }
+    }
+    if(obj.geometry) obj.geometry.dispose()
+  
+    // if(obj.material){ 
+    //     //in case of map, bumpMap, normalMap, envMap ...
+    //     Object.keys(obj.material).forEach(prop => {
+    //     if(!obj.material[prop])
+    //       return         
+    //     if(obj.material[prop] !== null && typeof obj.material[prop].dispose === 'function')                                  
+    //       obj.material[prop].dispose()                                                        
+    //     })
+    //     obj.material.dispose()
+    // }
+}   
+  
+var handleSearch = function(event) {
+    event.preventDefault();
+    // Get the search terms from the input field
+    var searchTerm = event.target.elements['search_query'].value;
+    // Tokenize the search terms and remove empty spaces
+    var tokens = searchTerm
+                    .toLowerCase()
+                    .split(/[ ,]+/)
+                    .filter(function(token){
+                    return token.trim() !== '';
+                    });
+    
+                    // (/[ ,]+/).filter(Boolean)
+    var tempPlaces=[];
+    if(tokens.length) {
+        tokens.forEach(token => {
+            for (const key in Places) {
+                if (Places[key][3].includes(token)) {
+                    tempPlaces[key]=Places[key];
+                    console.log(Places[key]);
+                }
+            }
+        });
+        clearThree(scene);
+        drawScene(tempPlaces);
+    }
+};
+form.addEventListener('submit', handleSearch);
+document.addEventListener('reset', function(event){
+    event.preventDefault();
+    document.querySelector('.search').value = '';
+    Places=[];
+    Places=allPlaces;
+    clearThree(scene);
+    // const placenew=;
+    drawScene(allPlaces);
+})

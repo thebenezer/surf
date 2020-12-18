@@ -13,8 +13,8 @@
     <!-- <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500&display=swap" rel="stylesheet"> -->
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./css/content.css">
     <link rel="stylesheet" href="./css/nav.css">
+    <link rel="stylesheet" href="./css/search.css">
 </head>
 
 <body>
@@ -31,7 +31,7 @@
       </div>
         <nav>
             <div class="logo">
-                <a href="index.html" ><img src="./assets/images/surf.svg" alt="" /></a>
+                <a href="index.html" ><img src="./assets/images/surf.svg" alt="logo" /></a>
             </div>
                 <ul class="navlinks">
                 <li><a href="explore.html">Explore</a></li>
@@ -110,51 +110,24 @@
         </form>
         </div>
     </div>
+
     <!-- ****************** ALL CONTENT HERE ******************* -->
 
+
+
     <main>
-        <section class="container">
-            <article class="profile">
-                <div class="card">
-                    <!-- <img class="profile_pic" src="https://m.media-amazon.com/images/S/aplus-media/vc/cab6b08a-dd8f-4534-b845-e33489e91240._CR75,0,300,300_PT0_SX300__.jpg" alt=""> -->
-                    <div class="profile_pic" style="background-image: url('./assets/images/greenery.jpg');"></div>
-                    <img class="globe_link" src="./assets/images/opi.png">
-                    <div class="card_info">
-                        <div class="uid">rock</div>
-                        <h2 class="name">Dwyane Johnson</h2>
-                        <div class="desc">Traveller and explorer of the world</div>
-                        <div class="actions">
-                            <button><img src="./assets/images/edit.svg" alt=""></button>
-                            <!-- <button><img src="./assets/images/friends.svg" alt=""></button> -->
-                            <!-- <button><img src="./assets/images/paper-plane.svg" alt=""></button> -->
-                        </div>
-                    </div>
-                </div>
-                <div class="badge-card">
-                    <div class="badge" >
-                        <img class="badge_pic" src="./assets/images/badge.jpg" alt="">
-                        <canvas class="badge_pic" id="c"></canvs>
-                    </div>
-                    <!-- <div class="globe_link"></div> -->
-                    <div class="card_info">
-                        <h2 class="name"></h2>
-                        <div class="desc">
-                            <p><b>Places Travelled :</b> 12</p>
-                            <p><b>Badges Earned&nbsp;&nbsp;:</b> 12</p>
-                        </div>
-                        <div class="actions">
-                            <button><img src="./assets/images/paper-plane.svg" alt=""></button>
-                        </div>
-                    </div>
-                </div>
-            </article>
-            <div class="flipbox">
-                <h3 class="fliptext">Memories</h3>
-                <input type="checkbox" class="flip_list" id="flip">
-                <h3 class="fliptext">Wishlist</h3>
-                <h2 class="mobile_fliptext"></h2>
+        <section class="searching">
+            <a id="pop-info">Place </a>
+            <canvas class="search_earth" id="c"></canvas>
+            <div class="searchcont">
+                <form class="search_bar">
+                    <input type="text" placeholder="Beach, wildlife, jungle..." name="search_query"class="search" autocomplete="off">
+                    <button type="submit" name="search_go"><img src="./assets/images/search.png" alt="Search"></button>
+                    <button type="reset" name="reset_go">Clear</button>
+                </form>
             </div>
-        </section>
+    </section>
+
     </main>
    
 
@@ -210,9 +183,14 @@
     <!-- **************** SCRIPTS ***************** -->
     <script src="./js/menu.js"></script>
     <script src="./js/scroll.js"></script>
-    
+    <script src="./js/click.js" type="module"></script>
+    <!-- <script>
+        const body = document.querySelector('body');
+        const loadingScreen = document.querySelector('.loading-screen');
+        loadingScreen.classList.toggle('complete');
+        setTimeout(function(){ body.classList.add('complete'); }, 2000);
+        setTimeout(function(){ loadingScreen.classList.add('hide'); }, 2000);
+    </script> -->
+</body>
 
-    <!-- **************** SCRIPTS ***************** -->
-    <script src="./js/profile_earth.js" type="module"></script> 
-    </body>
 </html>
