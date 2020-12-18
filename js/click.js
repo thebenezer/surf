@@ -10,7 +10,7 @@ const form=document.querySelector('.search_bar');
 
 let renderer,camera,scene,controls,raycaster;
 let mouse = new THREE.Vector2(), INTERSECTED,Places,allPlaces;
-
+let clickxy = new THREE.Vector2();
 
 
 function loadingcomplete(){
@@ -24,20 +24,21 @@ function loadingcomplete(){
 function onDocumentMouseMove( event ) {
 
     event.preventDefault();
-    // mouse.x = ( ( event.clientX - renderer.domElement.offsetLeft ) / renderer.domElement.clientWidth ) * 2 - 1;
-    // mouse.y = - ( ( event.clientY - renderer.domElement.offsetTop ) / renderer.domElement.clientHeight ) * 2 + 1;
-    mouse.x = ( event.clientX / canvas.clientWidth ) * 2 - 1;
-    mouse.y = - ( event.clientY / canvas.clientHeight ) * 2 + 1;
+    clickxy.x=event.clientX;
+    clickxy.y=event.clientY;
+    mouse.x = ( ( clickxy.x - renderer.domElement.offsetLeft ) / renderer.domElement.clientWidth ) * 2 - 1;
+    mouse.y = - ( ( clickxy.y - renderer.domElement.offsetTop ) / renderer.domElement.clientHeight ) * 2 + 1;
 
 }
 function onDocumentTouchEnd( event ) {
 
     event.preventDefault();
     var touches = event.changedTouches;
-    mouse.x = ( touches[0].pageX / canvas.clientWidth ) * 2 - 1;
-    mouse.y = - ( touches[0].pageY / canvas.clientHeight ) * 2 + 1;
+    clickxy.x=touches[0].pageX;
+    clickxy.y=touches[0].pageY;
+    mouse.x = ( (clickxy.x- renderer.domElement.offsetLeft) / renderer.domElement.clientWidth  ) * 2 - 1;
+    mouse.y = - ( (clickxy.y- renderer.domElement.offsetTop) / renderer.domElement.clientHeight  ) * 2 + 1;
     // mouse.x = ( touches[0].pageX / window.innerWidth ) * 2 - 1;
-    // mouse.y = - ( touches[0].pageY / window.innerHeight ) * 2 + 1;
 }
 // function onDocumentTouchEnd( event ) {
 
@@ -196,11 +197,15 @@ function main(){
         tempV.project(camera);
        
         // convert the normalized position to CSS coordinates
-        const x = (tempV.x *  .5 + .5) * canvas.clientWidth;
-        const y = (tempV.y * -.5 + .5) * canvas.clientHeight;
+        // const x = (tempV.x *  .5 + .5) * canvas.clientWidth;
+        // const y = (tempV.y * -.5 + .5) * canvas.clientHeight;
+        const x = clickxy.x-80;
+        const y = clickxy.y-80;
        
         // move the elem to that position
-        pop_info.style.transform = `translate(-50%, -50%) translate(${x}px,${y}px)`;
+        // pop_info.style.transform = `translate(-50%,-50%) translate(${x}px,${y}px)`;
+        pop_info.style.left = `${x}px`;
+        pop_info.style.top = `${y}px`;
         // var addr = "./places/"+obj.name.toLowerCase()+".php";
         var addr = "./place.php?country="+Places[obj.name][3];
         pop_info.setAttribute('href',addr);
