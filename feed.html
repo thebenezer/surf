@@ -1,133 +1,211 @@
+
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>feed</title>
-        <link rel="stylesheet" href="feed.css" />
-        
-    </head>
-    <body>
-        <div class="container">
-            <div class="logo">surf</div>
-            <div class="container-left">
-                <div class="container-left-img"></div>
-                <div class="left-img-btn">Surf <br> Travel is love.</div>
-               
-            </div>
-            <div class="container-right">
-                <div class="right-upper-text">
-                </div>
-                <div class="right-bottom-text">
-                </div>
-            </div>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Surf</title>
+    <link rel="icon" type="image/svg" href="favicon.svg">
+    <link rel="apple-touch-icon" sizes="180x180" href="static/images/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="static/images/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="static/images/favicons/favicon-16x16.png">
+    <link href="https://fonts.googleapis.com/css2?family=Prata&display=swap" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500&display=swap" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/feed.css">
+    <link rel="stylesheet" href="./css/nav.css">
+</head>
+
+<body>
+   <div class="loading-screen">
+    <h1 class="load-logo">SURF</h1>
+    <p class="tagline">Destinations made simple</p>
+    <img  class="boat" src="./assets/images/sailboat.svg" alt="">
+    <p class="loading">Loading...</p>
+</div>
+<header>
+    <div class="scroll-to-top">
+        <img src="./assets/images/up.svg" alt="up icon">
+        <span>Scroll</span>
+    </div>
+    <nav>
+        <div class="logo">
+            <a href="index.html" ><img src="./assets/images/surf.svg" alt="logo" /></a>
         </div>
+            <ul class="navlinks">
+                <li><a href="explore.html">Explore</a></li>
+                <li><a href="feed.html">Feed</a></li>
+            
+        
+                        <li class="mobile-signup"><a onclick="openSignupForm()">Sign-up</a></li>
+                <li><a href="#" onclick="openLoginForm()">Login</a></li>
+            </ul>
+            <a class="cta" onclick="openSignupForm()">Signup</a>
         
 
+        <div class="hamburger">
+            <span class="line1"></span>
+            <span class="line2"></span>
+            <span class="line3"></span>
+        </div>
+     </nav>
+</header>
+
+
+
+<!-- ****************** LOGIN FORM ******************* -->
+
+<div class="loginwindow">
+    <form method="POST" action="./profile.html" class="ls-form">
+        <div class="close-form" onclick="closeForm()">
+            <span class="close-l1"></span>
+            <span class="close-l2"></span>
+        </div>
+        <h1>Login</h1>
        
 
+        <label class="ls-label">
+            <input type="text" name="uid" required />
+            <div class="ls-label-text">Username/Email</div>
+        </label>
+        <label class="ls-label">
+            <input type="password" name="pwd" required />
+            <div class="ls-label-text">Password</div>
+        </label>
 
-        <div class="horizontal_slider">
-            <div class="slider_container">
-                <div class="item">
-                    <img src="g1.jpg">
-                    <div class="content">
-                        <h2>Destination one<br><span>Country Name</span></h2>
-                    </div>
-                </div>
-                <div class="item">
-                    <img src="i2.jpg">
-                    <div class="content">
-                        <h2>Destination one<br><span>Country Name</span></h2>
-                    </div>
-                </div>
-                <div class="item">
-                    <img src="i3.jpg">
-                    <div class="content">
-                        <h2>Destination one<br><span>Country Name</span></h2>
-                    </div>
-                </div>
-                <div class="item">
-                    <img src="i4.jpg">
-                    <div class="content">
-                        <h2>Destination one<br><span>Country Name</span></h2>
-                    </div>
-                </div>
-                <div class="item">
-                    <img src="i5.jpg">
-                    <div class="content">
-                        <h2>Destination one<br><span>Country Name</span></h2>
-                    </div>
-                </div>
-                <div class="item">
-                    <img src="i6.jpg">
-                    <div class="content">
-                        <h2>Destination one<br><span>Country Name</span></h2>
-                    </div>
-                </div>
-                <div class="item">
-                    <img src="i7.jpg">
-                    <div class="content">
-                        <h2>Destination one<br><span>Country Name</span></h2>
-                    </div>
-                </div>
-                <div class="item">
-                    <img src="img1.jpg">
-                    <div class="content">
-                        <h2>Destination one<br><span>Country Name</span></h2>
-                    </div>
-                </div>
-                <div class="item">
-                    <img src="itransport.jpg">
-                    <div class="content">
-                        <h2>Destination one<br><span>Country Name</span></h2>
-                    </div>
-                </div>
-                <div class="item">
-                    <img src="pisa.jpg">
-                    <div class="content">
-                        <h2>Destination one<br><span>Country Name</span></h2>
-                    </div>
-                </div>
-                <div class="item">
-                    <img src="banner.jpg">
-                    <div class="content">
-                        <h2>Destination one<br><span>Country Name</span></h2>
-                    </div>
-                </div>
-                <div class="item">
-                    <img src="banner2.jpg">
-                    <div class="content">
-                        <h2>Destination one<br><span>Country Name</span></h2>
-                    </div>
-                </div>
+        <button type="submit" class="btn" name="login-submit">Login</button>
+        <p>New to SURF?</p>
+        <div type="button" class="secondbtn" onclick="openSignupForm()">Sign-up</div>
+    </form>
+    </div>
+</div>
+
+<!-- ****************** SIGNUP FORM ******************* -->
+
+<div class="signupwindow">
+    <form method="POST" action="./profile.html" class="ls-form">
+        <div class="close-form" onclick="closeForm()">
+            <span class="close-l1"></span>
+            <span class="close-l2"></span>
+        </div>
+        <h1>Signup</h1>
+       
+
+        <label class="ls-label">
+            <input type="text" name="uid"required />
+            <div class="ls-label-text">Username</div>
+        </label>
+        <label class="ls-label">
+            <input type="email" name="email" required />
+            <div class="ls-label-text">E-mail</div>
+        </label>
+        <label class="ls-label">
+            <input type="password" name="pwd" required />
+            <div class="ls-label-text">Password</div>
+        </label>
+        <label class="ls-label">
+            <input type="password" name="conf_pwd" required />
+            <div class="ls-label-text">Confirm Password</div>
+        </label>
+
+        <button type="submit" class="btn" name="signup-submit">Sign-up</button>    
+        <p>Have an account already?</p>
+        <div type="submit" class="secondbtn" onclick="openLoginForm()">Login</div>
+    </form>
+    </div>
+</div>    <!-- ****************** ALL CONTENT HERE ******************* -->
+
+    <main>
+        <section class="container">
+            <div id="photos">
+            <a href="./place.html?country=6"><img src="
+./assets/placeimages/japan/small7.jpg" style="width:100%"></a><a href="./place.html?country=6"><img src="./assets/placeimages/japan/3.jpg" style="width:100%"></a><a href="./place.html?country=10"><img src="
+./assets/placeimages/turkey/small5.jpg" style="width:100%"></a><a href="./place.html?country=11"><img src="" style="width:100%"></a><a href="./place.html?country=3"><img src="./assets/placeimages/uk/small3.jpg" style="width:100%"></a><a href="./place.html?country=6"><img src="./assets/placeimages/japan/1.jpg" style="width:100%"></a><a href="./place.html?country=15"><img src="./assets/placeimages/brazil/5.jpg" style="width:100%"></a><a href="./place.html?country=8"><img src="./assets/placeimages/mexico/6.jpg" style="width:100%"></a><a href="./place.html?country=1"><img src="./assets/placeimages/australia/4.jpg" style="width:100%"></a><a href="./place.html?country=17"><img src="./assets/placeimages/indonesia/4.jpg" style="width:100%"></a><a href="./place.html?country=17"><img src="./assets/placeimages/indonesia/8.jpg" style="width:100%"></a><a href="./place.html?country=14"><img src="./assets/placeimages/safrica/8.jpg" style="width:100%"></a><a href="./place.html?country=14"><img src="
+./assets/placeimages/safrica/small8.jpg" style="width:100%"></a><a href="./place.html?country=8"><img src="./assets/placeimages/mexico/8.jpg" style="width:100%"></a><a href="./place.html?country=10"><img src="./assets/placeimages/turkey/1.jpg" style="width:100%"></a><a href="./place.html?country=11"><img src="
+./assets/placeimages/thailand/small6.jpg" style="width:100%"></a><a href="./place.html?country=4"><img src="
+./assets/placeimages/spain/small5.jpg" style="width:100%"></a><a href="./place.html?country=3"><img src="./assets/placeimages/uk/small4.jpg" style="width:100%"></a><a href="./place.html?country=13"><img src="
+./assets/placeimages/germany/small4.jpg" style="width:100%"></a><a href="./place.html?country=16"><img src="
+./assets/placeimages/nzealand/small3.jpg" style="width:100%"></a><a href="./place.html?country=1"><img src="
+./assets/placeimages/australia/small1.jpg" style="width:100%"></a><a href="./place.html?country=13"><img src="
+./assets/placeimages/germany/small2.jpg" style="width:100%"></a><a href="./place.html?country=9"><img src="./assets/placeimages/france/4.jpg" style="width:100%"></a><a href="./place.html?country=15"><img src="
+./assets/placeimages/brazil/small6.jpg" style="width:100%"></a><a href="./place.html?country=7"><img src="./assets/placeimages/usa/8.jpg" style="width:100%"></a><a href="./place.html?country=15"><img src="./assets/placeimages/brazil/3.jpg" style="width:100%"></a><a href="./place.html?country=5"><img src="
+./assets/placeimages/italy/small1.jpg" style="width:100%"></a><a href="./place.html?country=12"><img src="
+./assets/placeimages/china/small4.jpg" style="width:100%"></a><a href="./place.html?country=8"><img src="
+./assets/placeimages/mexico/small8.jpg" style="width:100%"></a><a href="./place.html?country=13"><img src="./assets/placeimages/germany/6.jpg" style="width:100%"></a><a href="./place.html?country=16"><img src="./assets/placeimages/nzealand/6.jpg" style="width:100%"></a><a href="./place.html?country=15"><img src="
+./assets/placeimages/brazil/small8.jpg" style="width:100%"></a><a href="./place.html?country=10"><img src="./assets/placeimages/turkey/5.jpg" style="width:100%"></a><a href="./place.html?country=3"><img src="./assets/placeimages/uk/2.jpg" style="width:100%"></a><a href="./place.html?country=1"><img src="./assets/placeimages/australia/5.jpg" style="width:100%"></a><a href="./place.html?country=4"><img src="
+./assets/placeimages/spain/small8.jpg" style="width:100%"></a><a href="./place.html?country=12"><img src="" style="width:100%"></a><a href="./place.html?country=17"><img src="
+./assets/placeimages/indonesia/small2.jpg" style="width:100%"></a><a href="./place.html?country=16"><img src="
+./assets/placeimages/nzealand/small5.jpg" style="width:100%"></a><a href="./place.html?country=13"><img src="./assets/placeimages/germany/3.jpg" style="width:100%"></a><a href="./place.html?country=5"><img src="./assets/placeimages/italy/3.jpg" style="width:100%"></a><a href="./place.html?country=4"><img src="./assets/placeimages/spain/9.jpg" style="width:100%"></a><a href="./place.html?country=3"><img src="
+./assets/placeimages/uk/small1.jpg" style="width:100%"></a><a href="./place.html?country=16"><img src="./assets/placeimages/nzealand/9.jpg" style="width:100%"></a><a href="./place.html?country=12"><img src="./assets/placeimages/china/9.jpg" style="width:100%"></a><a href="./place.html?country=14"><img src="
+./assets/placeimages/safrica/small7.jpg" style="width:100%"></a><a href="./place.html?country=4"><img src="./assets/placeimages/spain/6.jpg" style="width:100%"></a><a href="./place.html?country=8"><img src="./assets/placeimages/mexico/5.jpg" style="width:100%"></a><a href="./place.html?country=6"><img src="./assets/placeimages/japan/2.jpg" style="width:100%"></a><a href="./place.html?country=10"><img src="./assets/placeimages/turkey/2.jpg" style="width:100%"></a>                
             </div>
+        </section>
+    </main>
+   
+
+    <footer>
+    <div class="newsletter-section">
+        <div class="handpicked"></div>
+        <div class="newsletter">
+            <h6>Join The Club</h6>
+            <p>Sign up to our newsletter to receive product updates, exclusive offers and lucky draws.</p>
+            <form action="POST">
+                <input type="text" placeholder="Name" id="name" required>    
+                <input type="email" placeholder="Email" id="email" required><br>
+                <button type="submit" name="newsletter-sumbit">Count Me In</button>
+            </form>
         </div>
-
-
-        <p class="globelogo">
-            <img class="dest-entry-divider" style="margin-top: 30px;" src="https://www.nomadicmatt.com/wp-content/themes/nomadicmatt/images/blog_divider_735x40_@2x.png" data-src="https://www.nomadicmatt.com/wp-content/themes/nomadicmatt/images/blog_divider_735x40_@2x.png" loading="lazy">
-        </p>
-
-
-
-        <div class="map">
-            <img src="map.png">
-            <span class="marker1">
-               
-            </span>
-            <span class="marker2">
-                <img src="destination1.jpg" class="img1"> </span>
-            <span class="marker3"></span>
-            <span class="marker4"></span>
-            <span class="marker5"></span>
-        </div>
-
-
-        <p class="globelogo">
-            <img class="dest-entry-divider" style="margin-top: 100px;" src="https://www.nomadicmatt.com/wp-content/themes/nomadicmatt/images/blog_divider_735x40_@2x.png" data-src="https://www.nomadicmatt.com/wp-content/themes/nomadicmatt/images/blog_divider_735x40_@2x.png" loading="lazy">
-        </p>
-            
-    </body>
+    </div>
     
+    <div class="innerfooter">
+        <div class="moto">
+            <a href="index.html" class="logo"><img src="./assets/images/surf.svg" alt=""></a>
+            <p>Destinations made simple.</p>
+            <ul class="social">
+                <li><a href="#"></a></li>
+                <li><a href="#"></a></li>
+                <li><a href="#"></a></li>
+            </ul>
+        </div>
+        <div class="footerlinks">
+            <ul>
+                <h6>SITE</h6>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="reviews.html">Reviews</a></li>
+                <!-- <li><a href="featured.html">Featured</a></li> -->
+            </ul>
+            
+            <ul>
+                <h6>INFO</h6>
+                <li><a href="privacy.html">Privacy</a></li>
+                <li><a href="terms.html">Terms</a></li>
+                <li><a href="bugreport.html">Bug Reports</a></li>
+                <!-- <li><a href="join.html">Join Us</a></li> -->
+            </ul>
+        </div>
+
+    </div>
+
+    <div class="copy"><br>
+        <p>&#169; 2020 Surf, Inc. All rights reserved.</p>
+    </div>
+</footer>
+
+
+<!-- **************** MENU SCRIPT ***************** -->
+<script src="./js/menu.js"></script>
+<script src="./js/scroll.js"></script>
+    <!-- **************** SCRIPTS ***************** -->
+    <script>
+        const body = document.querySelector('body');
+        const loadingScreen = document.querySelector('.loading-screen');
+        // loadingScreen.classList.toggle('complete');
+        // setTimeout(function(){ body.classList.add('complete'); }, 2000);
+        body.classList.add('complete');
+        setTimeout(function(){ loadingScreen.classList.add('hide'); }, 2000);
+    </script>
+    </body>
 </html>
