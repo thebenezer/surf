@@ -158,12 +158,12 @@ function main(){
 
         allPlaces=Places={
             "Australia": [-25.27,133.77,"australia_small.jpg","australia,opera house,great barrier reef,beach"],
-            "India": [20.6,79,"india_small.jpg","india,jungle"],
-            "UK": [55.57,-3.43,"uk_small.jpg","us,united kingdom,castle"],
-            "Spain": [40.46,-3.75,"spain_small.jpg","spain,beach"],
-            "Italy": [41.87, 12.56,"italy_small.jpg","italy"],
-            "Japan": [36.20, 138.25,"japan_small.jpg","japan"],
-            "USA": [37.09, -95.71,"usa_small.jpg","usa"],
+            "India": [20.6,79,"india_small.jpg","india,jungles,heritage,hillstation,worldwonder,wildlife,,taj mahal,culture,mughals,charminar,golden temple"],
+            "UK": [55.57,-3.43,"uk_small.jpg","uk,united kingdom,castle,london,england,uk"],
+            "Spain": [40.46,-3.75,"spain_small.jpg","spain,,beach,beaches,heritage,museums"],
+            "Italy": [41.87, 12.56,"italy_small.jpg","italy,worldwonder,lakes,heritage,mountains"],
+            "Japan": [36.20, 138.25,"japan_small.jpg","japan,landofrisingsun,tokyo,culture"],
+            "USA": [37.09, -95.71,"usa_small.jpg","usa,united states,america,indians,cheerokee,ny,new york,washington"],
             "Mexico":[23.6345, -102.55,"mexico_small.jpg","mexico"],
             "France":[46.22, 2.21,"france_small.jpg","france"],
             "Turkey":[38.96, 35.24,"turkey_small.jpg","turkey"],
@@ -173,7 +173,7 @@ function main(){
             "South Africa":[-30.56, 22.93,"sa_small.jpg","sa,south africa,"],
             "Brazil":[-14.23, -51.92,"brazil_small.jpg","brazil"],
             "New Zeland": [-40.90, 174.88,"newzeland_small.jpg","nz,new zeland"],
-            "Indonesia": [-0.79,113.92,"indonesia_small.jpg","indonesia,bali"]};
+            "Indonesia": [-0.79,113.92,"indonesia_small.jpg","indonesia,bali,indonesia,bali,beach,prambanan temple,komodo dragon"]};
 
         drawScene(Places);     
         canvas.addEventListener( 'mousemove', onDocumentMouseMove, false );
