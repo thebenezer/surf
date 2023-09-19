@@ -19,7 +19,7 @@ As a user, you can click on any location on the globe that will take you to that
 
 ## Live project
 
-The live project can be viewed [here](https://thebenezer.github.io/surf/).
+The live project can be viewed [here]().
 <hr>
 
 
